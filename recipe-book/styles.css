@@ -1,0 +1,24 @@
+* {
+	background-color: #000000;
+	color: #FFFFFF;
+}
+
+
+a {
+	color: #FF9999;
+	text-decoration: none;
+	font-style: italic;
+}
+
+img,
+.judul,
+.content {
+	padding: 0px 25% 0px;
+}
+
+img {
+	width: 50%;
+}
+.content {
+	text-align: justify;
+}
