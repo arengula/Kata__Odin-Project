@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title> Library | Odin Project</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body class="app">
+	<main class="library">
+		<section class="library__rack rack">
+			<section class="rack__frame">
+				<section class="rack__book-list" id="book-list">
+					<img class="rack__book book__cover" src="https://m.media-amazon.com/images/I/41E2ea3d1iL.jpg" alt="">
+				</section>
+				<section class="rack__button-list button-list">
+					<div class="button--3d">
+						<button class="button-list__item" id="button--rack-prev-group" type="button"> < </button>
+					</div>
+					<div class="button--3d">
+						<button class="button-list__item" id="button--rack-new-book" type="button"> + </button>
+					</div>
+					<div class="button--3d">
+						<button class="button-list__item" id="button--rack-next-group" type="button"> > </button>
+					</div>
+				</section>
+			</section>
+		</section>
+	</main>
+
+	<div id="app__dimmer"> </div>
+
+	<section class="flex-wrapper--middle">
+		<section class="popup popup--form" id="new-book-popup">
+			<section class="popup__header">
+				<h3 class="popup__title"> Add New Book</h3>
+				<section class="popup__header-buttons button-list" id="">
+					<button class="button-list__item" type="button">_</button>
+					<button class="button-list__item" type="button" id="new-book__exit">X</button>
+				</section>
+			</section>
+			<form action="">
+				<section class="form__entry-list" id="new-book__entries">
+					<section class="form__entry entry--oneline">
+						<label for="new-book-title">Title</label>
+						<input class="form__short-field" type="text" id="new-book-title" placeholder="My Immortal">
+					</section>
+					<section class="form__entry entry--oneline">
+						<label for="new-book-author">Author</label>
+						<input class="form__short-field" type="text" id="new-book-author" placeholder="Tara Gillesbie">
+					</section>
+					<section class="form__entry entry--oneline">
+						<label for="new-book-cover-link">Cover Link</label>
+						<input class="form__short-field" type="text" id="new-book-author" placeholder="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1406504871i/11099295.jpg">
+					</section>
+					<section class="form__entry">
+						<label for="new-book-synopsis">Synopsis</label>
+						<textarea id="new-book-synopsis" class="form__long-field" name="" cols="100" rows="3"></textarea>
+					</section>
+				</section>
+		
+				<ul class="form__button-list button-list">
+					<button class="button-list__item button--active" type="button" id="new-book__add">Add</button>
+					<button class="button-list__item button--warn" type="reset">Reset</button>
+				</ul>
+			</form>
+		</section>
+	</section>
+	<script src="script.js"></script>
+</body>
+</html>
+
