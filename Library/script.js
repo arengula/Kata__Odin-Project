@@ -24,7 +24,7 @@ function initialize_site() {
 	new_book_open.addEventListener("click", () => {
 		dimmer.style.display = "block";
 		new_book_form.style.display = "block";
-		body.style.overflow = "visible";
+		body.style.overflow = "hidden";
 	})
 
 
@@ -32,6 +32,13 @@ function initialize_site() {
 	button.addEventListener("click", () => {
 		dimmer.style.display = "none";
 		new_book_form.style.display = "none";
+		body.style.overflow = "visible";
+	})
+
+	button = GetById("about-book__exit");
+	button.addEventListener("click", () => {
+		dimmer.style.display = "none";
+		GetById("about-book-popup").style.display = "none";
 		body.style.overflow = "visible";
 	})
 
@@ -121,6 +128,8 @@ function preload_books() {
 	)
 }
 
+let book_clicked = ""
+
 function render_rack() {
 	BOOK_RACK.textContent = '';
 	let i = paginator_pos*10
@@ -128,10 +137,30 @@ function render_rack() {
 
 	let cover_template = document.createElement("img")
 	cover_template.classList.add("book__cover", "rack__book");
+
+	let about_popup = GetById("about-book-popup")
+	let body = document.querySelector("body")
 	while(books_added < 10 && i < book_list.length) {
 		cover_template.setAttribute("id", `book${books_added}`);
 		cover_template.src = book_list[i].cover;
 		BOOK_RACK.appendChild(cover_template.cloneNode(true));
+
+		let this_book = BOOK_RACK.children[books_added];
+		this_book.onclick = () => {
+			book_pos = get_book_pos(this_book.id)
+			handle_view_book(book_pos);
+			dimmer.style.display = "block";
+			about_popup.style.display = "block";
+			body.style.overflow = "hidden";
+
+			let button = GetById("about__delete");
+			button.onclick = () => {
+				remove_book(book_pos);
+				dimmer.style.display = "none";
+				about_popup.style.display = "none";
+				body.style.overflow = "visible";
+			}
+		}
 
 		books_added++;
 		i++;
@@ -167,10 +196,25 @@ function handle_paginator(step) {
 	}
 }
 
-function handle_view_book() {
+function get_book_pos(bookID) { return paginator_pos*10 + Number(bookID.at(4)); }
+
+function handle_view_book(book_pos) {
+	book = book_list[book_pos];
+	
+	let book_cover = GetById("about__cover")
+	book_cover.src = book.cover;
+	GetById("about__title").textContent = book.title
+	GetById("about__author").textContent = book.author
+	GetById("about__synopsis").textContent = book.synopsis
 }
 
-function remove_book() {
+function remove_book(book_pos) {
+	book_list.splice(book_pos, 1);
+
+	if(paginator_pos*10 >= book_list.length && paginator != 0) {
+		paginator_pos--;
+	}
+	render_rack();
 }
 
 function main() {

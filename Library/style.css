@@ -48,7 +48,6 @@ body {
 	position: relative;
 	top: 0; left: 0;
 	z-index: 80001;
-	width: 50%;
 	border: 1px solid grey;
 	border-radius: 20px;
 	padding: 20px;
@@ -73,6 +72,34 @@ body {
 		.popup__header-buttons > button:hover {
 			border: 1px solid black;
 		}
+
+#new-book-popup { width: 50%; }
+#about-book-popup { width: auto; max-width: 50vw; }
+
+.about {
+	display: flex;
+	gap: 40px;
+	font-size: 16px;
+}
+	.about__entries > .about__title { font-size: 24px; }
+
+	.about__entries > .about__title::before,
+	.about__entries > .about__title::after { 
+		content:"\""; color: grey; 
+	}
+
+	.about__entries > .about__author {  font-size: 16px; font-weight: normal; margin-bottom: 20px;}
+	.about > img {
+		height: 300px;
+		width: 200px;
+	}
+	#about__synopsis { margin-bottom: 20px; max-height: 300px; overflow: scroll;}
+	.about__delete {
+		background: #FF3333; 
+		padding: 8px;
+		border-radius: 10px;
+		color: white;
+	}
 
 .popup--form { }
 	.popup--form > form { }

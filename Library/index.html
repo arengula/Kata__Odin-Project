@@ -30,11 +30,31 @@
 	<div id="app__dimmer"> </div>
 
 	<section class="flex-wrapper--middle">
+		<section class="popup popup--about" id="about-book-popup">
+			<section class="popup__header">
+				<h3 class="popup__title"> About Book</h3>
+				<section class="popup__header-buttons button-list">
+					<button class="button-list__item" type="button" id="about-book__exit">X</button>
+				</section>
+			</section>
+			<section class="about">
+				<img class="about__cover" src="" alt="Book Cover" id="about__cover">
+				<section class="about__entries">
+					<h2 class="about__title" id="about__title">Hellll</h2>
+					<h2 class="about__author" id="about__author">lhslahsl</h2>
+					<section class="about__entry">
+						<h2 class="entry__label">Synopsis</h2>
+						<p class="entry__value" id="about__synopsis"></p>
+					</section>
+					<button class="about__delete" id="about__delete" type="button"> Delete Book </button>
+				</section>
+			</section>
+		</section>
+
 		<section class="popup popup--form" id="new-book-popup">
 			<section class="popup__header">
 				<h3 class="popup__title"> Add New Book</h3>
 				<section class="popup__header-buttons button-list" id="">
-					<button class="button-list__item" type="button">_</button>
 					<button class="button-list__item" type="button" id="new-book__exit">X</button>
 				</section>
 			</section>
