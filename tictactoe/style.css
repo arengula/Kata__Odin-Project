@@ -82,12 +82,13 @@ p {font-family: Roboto}
 }
 
 .site__footer {
+	color: rgba(var(--color), 1);
 	display: flex;
 	justify-content: space-between;
 }
 
 .footer__left {
-	font-size: 24px;
+	font-size: clamp(18px, 5vw, 24px);
 	font-weight: bold;
 }
 .footer__right {

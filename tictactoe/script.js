@@ -112,8 +112,25 @@ const BOARD = (() => {
 				winner_sign = tiles[idx*3].get_content();
 			}
 		}
+
+		for(let idx = 0; idx < 3 && winner_sign == ""; idx++) {
+			if(tiles[idx].get_content() == tiles[3 + idx].get_content() && 
+				tiles[idx].get_content() == tiles[6 + idx].get_content()) 
+			{
+				winner_sign = tiles[idx].get_content();
+			}
+		}
+
+		let diag_right_match = (
+			tiles[0].get_content() == tiles[4].get_content() &&
+			tiles[0].get_content() == tiles[8].get_content())
+		let diag_left_match = (
+			tiles[2].get_content() == tiles[4].get_content() &&
+			tiles[2].get_content() == tiles[6].get_content())
+		if(diag_right_match || diag_left_match) {
+			winner_sign = tiles[4].get_content();
+		}
 		
-		// Horizontal Check
 		return winner_sign 
 	}
 	return {get_tiles, clear_tiles, scan, freeze}
@@ -124,7 +141,7 @@ const GAMEAI = (() => {
 	let their_opportunity = 0;
 	let stance = 0
 
-	const analyze = () {
+	const analyze = () => {
 
 	}
 
