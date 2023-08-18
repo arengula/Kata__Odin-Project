@@ -43,12 +43,13 @@ const GAME = (() => {
 		if(sign === "O") { GetById("game__info").textContent = "You win!";
 		} else if(sign == "X") { GetById("game__info").textContent = "AI wins!";
 		}
-
-
 	}
-		
-
-	return {set, toggle_turn, current_sign, get_winner, set_success}
+	return {
+		current_sign, 
+		get_winner, 
+		set, set_success,
+		toggle_turn
+	} 
 })()
 
 const board__tiles = () => {
@@ -68,15 +69,15 @@ const board__tiles = () => {
 		return -1;
 	}
 	
-	const freeze = () => { 
-		if(cell.textContent === "") {
-			cell.textContent = " ";
-		}
-	}
-
+	const freeze = () => { if(cell.textContent === "") { cell.textContent = " "; }}
 	const get_content = () => {return cell.textContent; }
 	const clear = () => {cell.textContent = ""; }
-	return {fill, bind, clear, freeze, get_content}
+	return {
+		bind, 
+		clear, 
+		fill, freeze,
+		get_content
+	}
 }
 
 /* A board consists of 9 tiles*/
@@ -84,9 +85,7 @@ const BOARD = (() => {
 	let tiles = new Array(9)
 
 	/* Presets */
-	for(let idx = 0; idx < 9; idx++) {
-		tiles[idx] = board__tiles()
-	}
+	for(let idx = 0; idx < 9; idx++) { tiles[idx] = board__tiles() }
 
 	const get_tiles = () => { return tiles; }
 	const clear_tiles = () => {
@@ -133,7 +132,13 @@ const BOARD = (() => {
 		
 		return winner_sign 
 	}
-	return {get_tiles, clear_tiles, scan, freeze}
+
+	return {
+		clear_tiles, 
+		freeze,
+		get_tiles, 
+		scan
+	}
 })()
 
 const GAMEAI = (() => {
@@ -142,7 +147,6 @@ const GAMEAI = (() => {
 	let stance = 0
 
 	const analyze = () => {
-
 	}
 
 	const think = () => {
@@ -154,8 +158,11 @@ const GAMEAI = (() => {
 	const act = () => {
 
 	}
+	
+	const do_routine = () => {
+	}
 
-	return {analyze, think, act};
+	return {analyze, think, act, do_routine};
 })()
 
 function initialize_site() {
