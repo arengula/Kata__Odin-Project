@@ -34,13 +34,17 @@ const GAME = (() => {
 
 	const set_success = (signal) => { fill_success = signal;}
 	const get_winner = (sign) => {
-		if(sign !== "O" || sign !== "X") {
+		if(sign !== "O" && sign !== "X") { 
+			if(tiles_filled == 9) {GetById("game__info").textContent = "No one wins!"; }
+			return 
 		}
 
 		BOARD.freeze();
 		if(sign === "O") { GetById("game__info").textContent = "You win!";
 		} else if(sign == "X") { GetById("game__info").textContent = "AI wins!";
 		}
+
+
 	}
 		
 
@@ -52,6 +56,11 @@ const board__tiles = () => {
 
 	const bind = (element) => { cell = element; }
 	const fill = () => { 
+		cell.classList.add("anim_-shake");
+		setTimeout(() => {
+			cell.classList.remove("anim_-shake");
+		}, 1000);
+
 		if(cell.textContent === "") {
 			cell.textContent = GAME.current_sign();
 			return 1;
@@ -65,8 +74,9 @@ const board__tiles = () => {
 		}
 	}
 
+	const get_content = () => {return cell.textContent; }
 	const clear = () => {cell.textContent = ""; }
-	return {fill, bind, clear, freeze};
+	return {fill, bind, clear, freeze, get_content}
 }
 
 /* A board consists of 9 tiles*/
@@ -80,7 +90,9 @@ const BOARD = (() => {
 
 	const get_tiles = () => { return tiles; }
 	const clear_tiles = () => {
+		let board_tiles = GetById("tic-tac-toe").children;
 		for(let idx = 0; idx < 9; idx++) {
+			board_tiles[idx].classList.remove("cell--filled")
 			tiles[idx].clear();
 		}
 	}
@@ -92,12 +104,42 @@ const BOARD = (() => {
 	}
 	
 	const scan = () => {
-		if(GAME.current_sign() == "X") { return "O" }
-		return "X"
+		let winner_sign = ""
+		for(let idx = 0; idx < 3 && winner_sign == ""; idx++) {
+			if(tiles[idx*3].get_content() == tiles[idx*3 + 1].get_content() && 
+				tiles[idx*3].get_content() == tiles[idx*3 + 2].get_content()) 
+			{
+				winner_sign = tiles[idx*3].get_content();
+			}
+		}
+		
+		// Horizontal Check
+		return winner_sign 
 	}
 	return {get_tiles, clear_tiles, scan, freeze}
 })()
 
+const GAMEAI = (() => {
+	let my_opportunity = 0;
+	let their_opportunity = 0;
+	let stance = 0
+
+	const analyze = () {
+
+	}
+
+	const think = () => {
+		if(my_opportunity > their_opportunity) {stance = 1
+		} else if(my_opportunity < their_opportunity) { stance = 0
+		} else { stance = Date.time() % 2; }
+	}
+	
+	const act = () => {
+
+	}
+
+	return {analyze, think, act};
+})()
 
 function initialize_site() {
 	let board_tiles = GetById("tic-tac-toe").children;
@@ -106,6 +148,7 @@ function initialize_site() {
 	for(let idx = 0; idx < 9; idx++) {
 		BOARD_tiles[idx].bind(board_tiles[idx].children[0])
 		board_tiles[idx].addEventListener("click", (e) => {
+			board_tiles[idx].classList.add("cell--filled");
 			GAME.set_success(BOARD_tiles[idx].fill())
 			GAME.toggle_turn();
 			GAME.get_winner(BOARD.scan());
@@ -116,6 +159,9 @@ function initialize_site() {
 	let button = GetById("game__start");
 	button.addEventListener("click", () => {
 		GAME.set();
+		if(GAME.current_sign() === "X") {
+			GAMEAI.think();
+		}
 	})
 }
 

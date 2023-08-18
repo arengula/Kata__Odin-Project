@@ -1,5 +1,7 @@
 h1, h2, h3, p, a, section { padding: 0px; margin: 0px; }
 a { font-style: italic;}
+h1 {font-family: Rubik, sans-serif}
+p {font-family: Roboto}
 
 :root {
 	--x-gap: 40px;
@@ -47,15 +49,15 @@ a { font-style: italic;}
 		content:"";
 		position: absolute;
 		top: 0; right: 0; left: 0; bottom: 0;
-		z-index: -1;
+		z-index: 1;
 	}
 	
 	.board__cell:hover::before { background: rgba(var(--color), 0.2); }
-	.board__cell:hover > .cell__content { color: rgba(var(--color)); }
+	.board__cell:hover > .cell__content { color: rgba(var(--color), 1); }
 
 	.cell--filled {
-		pointer-events: none;
 		background: rgba(var(--color), 0.2);
+		color: rgba(var(--color), 1); 
 	}
 
 	.cell--top-left { border-radius: 20px 0px 0px 0px; }
@@ -74,7 +76,33 @@ a { font-style: italic;}
 
 .site__game-info {
 	margin: 20px auto;
-	font-size: 24px;
+	font-size: 24px;k
 	font-weight: bold;
 	color: rgba(var(--color), 1);
+}
+
+.site__footer {
+	display: flex;
+	justify-content: space-between;
+}
+
+.footer__left {
+	font-size: 24px;
+	font-weight: bold;
+}
+.footer__right {
+	text-align: right;
+}
+
+.anim_-shake {
+	animation: 0.5s thing 1 normal;
+}
+
+@keyframes thing {
+	0% { }
+	20% { transform: rotate(-0.15turn); }
+	40% { transform: rotate(0.15turn); }
+	60% { transform: rotate(-0.05turn); }
+	80% { transform: rotate(0.05turn); }
+	100% { transform: rotate(0turn); }
 }
