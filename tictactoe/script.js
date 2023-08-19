@@ -10,8 +10,12 @@ const GAME = (() => {
 
 	const set = () => {
 		player_turn = (Date.now() % 2 == 1);
-		if(player_turn) { status_bar.textContent = "Your turn";
-		} else { status_bar.textContent = "Opponent's turn";
+		if(player_turn) { 
+			document.documentElement.style.setProperty("--color", "62, 118, 84")
+			status_bar.textContent = "Your turn";
+		} else { 
+			document.documentElement.style.setProperty("--color", "183, 69, 68")
+			status_bar.textContent = "Opponent's turn";
 		}
 
 		BOARD.clear_tiles();
@@ -152,7 +156,7 @@ const GAMEAI = (() => {
 	const think = () => {
 		if(my_opportunity > their_opportunity) {stance = 1
 		} else if(my_opportunity < their_opportunity) { stance = 0
-		} else { stance = Date.time() % 2; }
+		} else { stance = Date.now() % 2; }
 	}
 	
 	const act = () => {

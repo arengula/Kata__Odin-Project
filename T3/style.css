@@ -4,13 +4,13 @@ h1 {font-family: Rubik, sans-serif}
 p {font-family: Roboto}
 body {
 	margin: 0px; padding: 8px;
-	background: #fffbdd;
+	background: rgba(255, 252, 237, 1);
 }
 
 :root {
 	--x-gap: 40px;
 	--y-gap: 0px;
-	--color: 183, 69, 68; 
+	--color: 183, 69, 68;
 }
 
 .site {
