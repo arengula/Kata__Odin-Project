@@ -20,6 +20,11 @@ const GAME = (() => {
 		active_player = (active_player + 1) % 2; 
 		tiles_filled++
 	}
+	
+	const reset = () => {
+		draw();
+		tiles_filled = 0;
+	}
 
 	const whoWins = () => {
 		let winner_sign = ""
@@ -65,7 +70,7 @@ const GAME = (() => {
 		return [true, (winner_sign == "O" ? 0: 1)];
 	}
 
-	return {whoseTurn, draw, switchPlayer, isOver}
+	return {whoseTurn, draw, switchPlayer, isOver, reset}
 })()
 
 const BOARD = (() => {
@@ -90,18 +95,15 @@ const PAGE_RENDERER = (() => {
 	const BOARD_tiles = BOARD.getTiles()
 	const GAME_info = getById("game__info")
 	
-	const resetBoard = () => {
-	}
-
 	const updateGameInfo = () => {
 		let game_info = GAME.isOver();
 		if(!game_info[0]) {
-			GAME_info.textContent = (GAME.whoseTurn() == 0? "Your turn" : "AI's turn");
+			GAME_info.textContent = (GAME.whoseTurn() == 0? "Your Turn" : "AI's Turn");
 			return
 		}
 
 		if(game_info[1] == -1) { GAME_info.textContent = "It's a Draw! But still, you suck!";
-		} else { GAME_info.textContent = (game_info[1] == 0? "You win!": "You suck!")
+		} else { GAME_info.textContent = (game_info[1] == 0? "You Win!": "You Suck!")
 		}
 	}
 
@@ -137,6 +139,19 @@ const PAGE_RENDERER = (() => {
 				}
 			})
 		})
+
+		getById("game__start").addEventListener("click", () => {
+			GAME.reset();
+			BOARD.clear();
+			Object.values(BOARD_ele).forEach((elem) => {
+				elem.classList.remove("cell--filled")
+			})
+			updateGameInfo();
+			updateBoard();
+		})
+
+		updateGameInfo();
+		updateBoard();
 	}
 
 	return {initPage}

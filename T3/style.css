@@ -24,12 +24,16 @@ body {
 	}
 
 .site__header {
+	position: relative;
+	top: 10%;
 	text-align: center; 
 	color: rgba(var(--color), 1);
+	animation: 5s floatin infinite normal;
 }
+	.site__header:hover {animation: none;}
 
 .header__title { font-size: 28px;}
-.header__title:hover {text-decoration: underline; margin: 0px auto; }
+.header__title:hover { text-decoration: underline; margin: 0px auto; }
 .header__caption { font-size: 16px; }
 
 .site__main {
@@ -100,10 +104,17 @@ body {
 }
 
 .anim_-shake {
-	animation: 0.5s thing 1 normal;
+	animation: 0.5s spin 1 normal;
 }
 
-@keyframes thing {
+@keyframes floatin {
+	0% {transition-timing-function: ease-out; transform: translate(0, 0%);}
+	25% {transition-timing-function: ease-out; transform: translate(0, 10%); }
+	50% {transition-timing-function: ease-out; transform: translate(0, 0%); }
+	75% {transition-timing-function: ease-out; transform: translate(0, 10%); }
+	100% {transition-timing-function: ease-out; transform: translate(0, 0%);}
+}
+@keyframes spin {
 	0% { }
 	20% { transform: rotate(-0.15turn); }
 	40% { transform: rotate(0.15turn); }
