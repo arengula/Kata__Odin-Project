@@ -24,7 +24,7 @@ const GAME = (() => {
 	let active_player = 0;
 	let tiles_filled = 0;
 	
-	const draw = () => { active_player = Date.now() % 2; }
+	const draw = () => { active_player = (Date.now() % 5 == 1? 0: 1); }
 	const whoseTurn = () => { return active_player; }
 
 	const switchPlayer = () => { 
@@ -43,17 +43,13 @@ const GAME = (() => {
 		for(let idx = 0; idx < 3 && winner_sign == ""; idx++) {
 			if(tiles[idx*3].seek() == tiles[idx*3 + 1].seek() && 
 				tiles[idx*3].seek() == tiles[idx*3 + 2].seek()) 
-			{
-				winner_sign = tiles[idx*3].seek();
-			}
+			{ winner_sign = tiles[idx*3].seek(); }
 		}
 
 		for(let idx = 0; idx < 3 && winner_sign == ""; idx++) {
 			if(tiles[idx].seek() == tiles[3 + idx].seek() && 
 				tiles[idx].seek() == tiles[6 + idx].seek()) 
-			{
-				winner_sign = tiles[idx].seek();
-			}
+			{ winner_sign = tiles[idx].seek(); }
 		}
 
 		let diag_right_match = (
@@ -87,9 +83,7 @@ const BOARD = (() => {
 	const getTiles = () => { return tiles; }
 	
 	const clear = () => {
-		Object.values(tiles).forEach((tile) => {
-			tile.fill("");
-		})
+		Object.values(tiles).forEach(tile => { tile.fill(""); })
 	}
 
 	for(let idx = 0; idx < 9; idx++) { tiles[idx] = fBoardTiles(); }
@@ -105,21 +99,16 @@ const GAMEAI = (() => {
 	const tellMyMove = () => { return last_move; }
 
 	const observe = (tiles = BOARD.getTiles()) => {
-		let empty_tiles = []
+		let empty_tiles = [];
 		Object.values(tiles).forEach((tile, idx) => {
 			if(tile.seek() == "") { empty_tiles.push(idx); }
 		})
-
-		return empty_tiles
-	}
-
-	const project = (sign, current_board, next_fill) => { 
-		current_board[next_fill].fill(sign);
+		return empty_tiles;
 	}
 
 	const FindBestMove = (depth_left, current_board, my_turn) => {
-		let empty_tiles = observe(current_board)
-		let game_info = GAME.isOver(current_board)
+		let empty_tiles = observe(current_board);
+		let game_info = GAME.isOver(current_board);
 		if(depth_left > 0 && game_info[0] == false && empty_tiles.length > 0) {
 			let score_list = []
 			empty_tiles.forEach(empty_pos => {
@@ -130,17 +119,15 @@ const GAMEAI = (() => {
 				));
 			})
 				
-			if(max_depth - depth_left == 0) {
+			return (my_turn? Math.max(...score_list): Math.min(...score_list))
+			/* if(max_depth - depth_left == 0) {
 				console.log(my_turn? "X": "O", empty_tiles, score_list, 
 					my_turn? Math.max(...score_list): Math.min(...score_list)
 				)
-			}
+			} */
 
-			return (my_turn? Math.max(...score_list): Math.min(...score_list))
 		}
-		
-		// AI_lose, draw, AI_win = -1, 0, 1
-		return -game_info[1];
+		return -game_info[1]; // AI_lose, draw, AI_win = -1, 0, 1
 	}
 
 	const routine = () => {
@@ -151,7 +138,7 @@ const GAMEAI = (() => {
 			last_move = empty_tiles[Date.now() % empty_tiles.length];
 		} else {
 			let score_list = []
-			console.log("Before routine work! ", observe())
+			// console.log("Before routine work! ", observe())
 			empty_tiles.forEach(empty_pos => {
 				let next_board = deep_copy_board(BOARD.getTiles());
 				next_board[empty_pos].fill("X");
@@ -162,12 +149,12 @@ const GAMEAI = (() => {
 			for(let idx = best + 1; idx < score_list.length; idx++) {
 				if(score_list[best] < score_list[idx]) { best = idx; }
 			}
-			console.log("Final result:", empty_tiles, score_list, best)
+			// console.log("Final result:", empty_tiles, score_list, best)
 			last_move = empty_tiles[best]
 		}
 		
 		BOARD.getTiles()[last_move].fill("X");
-		console.log(last_move, "After routine work! ", observe())
+		// console.log(last_move, "After routine work! ", observe())
 	}
 
 	return {setDepth, tellDepth, routine, tellMyMove};
@@ -228,7 +215,6 @@ const PAGE_RENDERER = (() => {
 		}
 		updateGameInfo();
 		updateBoard();
-
 	}
 
 	const handleDiffButtons = (diff, thing) => {
@@ -236,14 +222,14 @@ const PAGE_RENDERER = (() => {
 		switch(prev_diff) {
 			case 0: diff_buttons[0].firstChild.classList.remove("button--active-light"); break;
 			case 2: diff_buttons[1].firstChild.classList.remove("button--active-light"); break;
-			case 4: diff_buttons[2].firstChild.classList.remove("button--active-light"); break;
+			case 9: diff_buttons[2].firstChild.classList.remove("button--active-light"); break;
 		}
 
 		GAMEAI.setDepth(diff);
 		switch(diff) {
 			case 0: diff_buttons[0].firstChild.classList.add("button--active-light"); break;
 			case 2: diff_buttons[1].firstChild.classList.add("button--active-light"); break;
-			case 4: diff_buttons[2].firstChild.classList.add("button--active-light"); break;
+			case 9: diff_buttons[2].firstChild.classList.add("button--active-light"); break;
 		}
 	}
 
@@ -275,7 +261,7 @@ const PAGE_RENDERER = (() => {
 
 		getById("game__start").addEventListener("click", () => { doResetRoutine(); })
 		getById("diff--easy").addEventListener("click", () => { handleDiffButtons(0); doResetRoutine(); })
-		getById("diff--medium").addEventListener("click", () => { handleDiffButtons(3); doResetRoutine(); })
+		getById("diff--medium").addEventListener("click", () => { handleDiffButtons(2); doResetRoutine(); })
 		getById("diff--hell").addEventListener("click", () => { handleDiffButtons(9); doResetRoutine(); })
 
 		updateGameInfo();
