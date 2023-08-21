@@ -135,6 +135,7 @@ button {
 
 .float-on-click {
 	position: relative;
+	z-index: 696969;
 }
 	.float-on-click > section {
 		border-radius: 8px;
