@@ -23,6 +23,7 @@ const GAME = (() => {
 	
 	const reset = () => {
 		draw();
+		if(whoseTurn() == 1) { GAMEAI.routine(); }
 		tiles_filled = 0;
 	}
 
@@ -90,11 +91,50 @@ const BOARD = (() => {
 	return {getTiles, clear}
 })()
 
+const GAMEAI = (() => {
+	let max_depth = 0;
+	let initial_empty_pos = [];
+	let last_move = 696969;
+
+	const setDepth = depth => {max_depth = depth; }
+	const tellDepth = () => {return max_depth; }
+	const tellMyMove = () => { return last_move; }
+
+	const recon = () => {
+		Object.values(BOARD.getTiles()).forEach((tile, idx) => {
+			if(tile.seek() == "") { initial_empty_pos.push(idx); }
+		})
+	}
+
+	const project = (depth_left, current_board, next_fill) => { }
+
+	const routine = () => {
+		initial_empty_pos = []
+		recon()
+
+		let ideal_pos = Date.now() % 9;
+		if(initial_empty_pos.length == 9) {
+			last_move = ideal_pos
+			BOARD.getTiles()[ideal_pos].fill("X");
+			return
+		}
+
+		if(max_depth == 0) {
+			ideal_pos = initial_empty_pos[Date.now() % initial_empty_pos.length];
+			last_move = ideal_pos
+		}
+		return ideal_pos
+	}
+
+	return {setDepth, tellDepth, routine, tellMyMove};
+})()
+
 const PAGE_RENDERER = (() => {
 	const BOARD_ele = getById("tic-tac-toe").children;
-	const BOARD_tiles = BOARD.getTiles()
-	const GAME_info = getById("game__info")
-	
+	const BOARD_tiles = BOARD.getTiles();
+	const GAME_info = getById("game__info");
+	const diff_buttons = getById("diff-list").children;
+
 	const updateGameInfo = () => {
 		let game_info = GAME.isOver();
 		if(!game_info[0]) {
@@ -124,31 +164,75 @@ const PAGE_RENDERER = (() => {
 		}, duration*1000);
 	}
 
+	const handleAIMoves = () => {
+		BOARD_tiles[GAMEAI.tellMyMove()].fill("X");
+		let elem = BOARD_ele[GAMEAI.tellMyMove()]
+		elem.classList.add("cell--filled");
+		triggerAnimation(elem.firstChild, "anim_-shake", 0.5)
+	}
+
+	const doResetRoutine = () => {
+		GAME.reset();
+		BOARD.clear();
+		Object.values(BOARD_ele).forEach((elem) => {
+			elem.classList.remove("cell--filled")
+		})
+
+		if(GAME.whoseTurn() != 0) {
+			handleAIMoves();
+			GAME.switchPlayer();
+		}
+		updateGameInfo();
+		updateBoard();
+
+	}
+
+	const handleDiffButtons = (diff, thing) => {
+		let prev_diff = GAMEAI.tellDepth();
+		switch(prev_diff) {
+			case 0: diff_buttons[0].firstChild.classList.remove("button--active-light"); break;
+			case 4: diff_buttons[1].firstChild.classList.remove("button--active-light"); break;
+			case 9: diff_buttons[2].firstChild.classList.remove("button--active-light"); break;
+		}
+
+		GAMEAI.setDepth(diff);
+		switch(diff) {
+			case 0: diff_buttons[0].firstChild.classList.add("button--active-light"); break;
+			case 4: diff_buttons[1].firstChild.classList.add("button--active-light"); break;
+			case 9: diff_buttons[2].firstChild.classList.add("button--active-light"); break;
+		}
+	}
+
 	const initPage = () => {
+		if(GAME.whoseTurn() != 0) {
+			handleAIMoves();
+			GAME.switchPlayer();
+		}
+
 		Object.values(BOARD_ele).forEach((elem, idx) => {
 			elem.addEventListener("click", () => {
 				triggerAnimation(elem.firstChild, "anim_-shake", 0.5)
 				if(BOARD_tiles[idx].seek() == "" && !(GAME.isOver()[0])) {
 					elem.classList.add("cell--filled");
-					BOARD_tiles[idx].fill(
-						GAME.whoseTurn() === 0? "O": "X"
-					);
+					BOARD_tiles[idx].fill("O");
 					GAME.switchPlayer();
+
+					if(!GAME.isOver()[0]) {
+						GAMEAI.routine();
+						handleAIMoves();
+						GAME.switchPlayer();
+					}
+
 					updateGameInfo();
 					updateBoard(); 
 				}
 			})
 		})
 
-		getById("game__start").addEventListener("click", () => {
-			GAME.reset();
-			BOARD.clear();
-			Object.values(BOARD_ele).forEach((elem) => {
-				elem.classList.remove("cell--filled")
-			})
-			updateGameInfo();
-			updateBoard();
-		})
+		getById("game__start").addEventListener("click", () => { doResetRoutine(); })
+		getById("diff--easy").addEventListener("click", () => { handleDiffButtons(0); doResetRoutine(); })
+		getById("diff--medium").addEventListener("click", () => { handleDiffButtons(4); doResetRoutine(); })
+		getById("diff--hell").addEventListener("click", () => { handleDiffButtons(9); doResetRoutine(); })
 
 		updateGameInfo();
 		updateBoard();
@@ -159,7 +243,8 @@ const PAGE_RENDERER = (() => {
 
 
 function main() {
-	GAME.draw();
+	GAME.reset()
+	GAMEAI.setDepth(0);
 	PAGE_RENDERER.initPage();
 }
 

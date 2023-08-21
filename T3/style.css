@@ -157,6 +157,7 @@ button {
 	list-style: none;
 }
 	.flmenu__buttons > li > button {
+		cursor: pointer;
 		padding: 0px 5px;
 		color: white;
 		height: 40px;
