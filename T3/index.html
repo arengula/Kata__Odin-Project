@@ -26,10 +26,23 @@
 		</main>
 		<p class="site__game-info" id="game__info"> </p>
 		<footer class="site__footer">
-			<p class="footer__left">@2023 - Soleriss </p>
+			<p class="footer__left">@2023 - Solsteace </p>
 			<section class="footer__right">
-				<p class="footer">A project inspired from</p>
-				<p class="footer"><a href=https://www.theodinproject.com/lessons/node-path-javascript-tic-tac-toe> Odin Project</a></p>
+				<section class="footer__text">
+					<p>A project inspired from</p>
+					<p><a href=https://www.theodinproject.com/lessons/node-path-javascript-tic-tac-toe> Odin Project</a></p>
+				</section>
+				<section class="float-on-click">
+					<button class="setting" type="buttton"><img src="https://cdn-icons-png.flaticon.com/512/503/503849.png" alt="Settings icon" class="icon--button" id="settings"></button>
+					<section class="setting__menu flmenu">
+						<h3 class="flmenu__heading"> Difficulity </h3>
+						<ul class="flmenu__buttons button-list" id="diff-list">
+							<li><button class="button-list__button" type="button" id="diff--easy"> Easy </button></li>
+							<li><button class="button-list__button button--active-light" type="button" id="diff--medium"> Medium </button></li>
+							<li><button class="button-list__button" type="button" id="diff--hell"> Wutdehell </button></li>
+						</ul>
+					</section>
+				</section>
 			</section>
 		</footer>
 		<script src="./script.js"></script>

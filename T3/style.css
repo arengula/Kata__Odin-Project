@@ -1,16 +1,18 @@
-h1, h2, h3, p, a, section { padding: 0px; margin: 0px; }
+h1, h2, h3, p, a, section, ul, li, button { padding: 0px; margin: 0px; }
 a { font-style: italic;}
 h1 {font-family: Rubik, sans-serif}
 p {font-family: Roboto}
-body {
-	margin: 0px; padding: 8px;
-	background: rgba(255, 252, 237, 1);
-}
 
 :root {
 	--x-gap: 40px;
 	--y-gap: 0px;
 	--color: 183, 69, 68;
+	--color-background: 255, 252, 237;
+}
+
+body {
+	margin: 0px; padding: 8px;
+	background: rgba(var(--color-background), 1);
 }
 
 .site {
@@ -100,11 +102,68 @@ body {
 	font-weight: bold;
 }
 .footer__right {
+	display: flex;
+	gap: 5px;
 	text-align: right;
 }
 
 .anim_-shake {
 	animation: 0.5s spin 1 normal;
+}
+
+button {
+	background: rgba(1, 1, 1, 0);
+	border: 0px solid black;
+	aspect-ratio: 1;
+}
+	.button--active-light {
+		font-weight: bold;
+		text-decoration: underline;
+	}
+.icon { 
+}
+	.icon--button {
+		width: 40px;
+		aspect-ratio: 1;
+		transition: transform 0.25s, filter 0.25s;
+	}
+
+	button:hover > .icon--button {
+		transform: rotate(0.10turn);
+		filter: invert(20%);
+	}
+
+.float-on-click {
+	position: relative;
+}
+	.float-on-click > section {
+		border-radius: 8px;
+		background: rgba(0, 0, 0, 0.6);
+		text-align: left;
+		bottom: 120%; right: 0px;
+		position: absolute;
+	}
+
+
+.flmenu {
+	color: white;
+}
+
+.flmenu__heading {
+	padding: 10px 5px 0px;
+}
+
+.flmenu__buttons {
+	list-style: none;
+}
+	.flmenu__buttons > li > button {
+		padding: 0px 5px;
+		color: white;
+		height: 40px;
+	}
+
+#diff-list > *:hover {
+	background: rgba(255, 255, 255, 0.3);
 }
 
 @keyframes floatin {
