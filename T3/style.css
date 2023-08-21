@@ -163,10 +163,8 @@ button {
 		color: white;
 		height: 40px;
 	}
-
-#diff-list > *:hover {
-	background: rgba(255, 255, 255, 0.3);
-}
+#fl--game-diff { display: none; }
+#diff-list > *:hover { background: rgba(255, 255, 255, 0.3); }
 
 @keyframes floatin {
 	0% {transition-timing-function: ease-out; transform: translate(0, 0%);}

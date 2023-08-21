@@ -160,10 +160,11 @@ const GAMEAI = (() => {
 	return {setDepth, tellDepth, routine, tellMyMove};
 })()
 
-const PAGE_RENDERER = (() => {
+const PAGE_MANAGER = (() => {
 	const BOARD_ele = getById("tic-tac-toe").children;
 	const BOARD_tiles = BOARD.getTiles();
 	const GAME_info = getById("game__info");
+	const fl__game_diff = getById("fl--game-diff");
 	const diff_buttons = getById("diff-list").children;
 
 	const updateGameInfo = () => {
@@ -231,6 +232,8 @@ const PAGE_RENDERER = (() => {
 			case 2: diff_buttons[1].firstChild.classList.add("button--active-light"); break;
 			case 9: diff_buttons[2].firstChild.classList.add("button--active-light"); break;
 		}
+
+		fl__game_diff.style.display = "none";
 	}
 
 	const initPage = () => {
@@ -263,6 +266,11 @@ const PAGE_RENDERER = (() => {
 		getById("diff--easy").addEventListener("click", () => { handleDiffButtons(0); doResetRoutine(); })
 		getById("diff--medium").addEventListener("click", () => { handleDiffButtons(2); doResetRoutine(); })
 		getById("diff--hell").addEventListener("click", () => { handleDiffButtons(9); doResetRoutine(); })
+		getById("button--flgame-diff").addEventListener("click", () => {
+			if(fl__game_diff.style.display == "block") { fl__game_diff.style.display = "none";
+			} else { fl__game_diff.style.display = "block";
+			}
+		})
 
 		updateGameInfo();
 		updateBoard();
@@ -275,7 +283,7 @@ const PAGE_RENDERER = (() => {
 function main() {
 	GAME.reset()
 	GAMEAI.setDepth(0);
-	PAGE_RENDERER.initPage();
+	PAGE_MANAGER.initPage();
 }
 
 main()
