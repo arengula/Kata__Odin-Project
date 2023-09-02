@@ -1,4 +1,19 @@
-:root {
-	--colo-20: 229, 29, 29;
-	--colo-80: 0, 0, 0;
+body, h1, h2, h3,
+p, section, img, ul, li {
+	padding: 0;
+	margin: 0;
 }
+
+:root {
+	--colo-20: 234, 40, 40;
+	--colo-80: 255, 255, 255;
+	--x-margin: 4%;
+	background: rgba(var(--colo-80), 1);
+}
+
+.--blackToWhite {
+	filter: invert(100%);
+}
+
+.logo { aspect-ratio: 1; }
+.logo--large { width: 50px; }
