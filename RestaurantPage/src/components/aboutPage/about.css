@@ -34,10 +34,7 @@ article > div {
 .about { 
 	padding: 40px var(--x-margin); 
 }
-.about__groupHeading {
-	margin-bottom: 30px; 
-}
-.about__groupHeading > h2 { 
+.about__sectionGroup > h2 {
 	background: rgba(var(--colo-80), 1);
 	font-size: 32px;
 	text-align: center;
@@ -47,22 +44,18 @@ article > div {
 .about__groupContent { 
 	padding: 0px 50px;
 	display: grid;
-	grid-template: 1fr / repeat(auto-fit, minmax(400px, 1fr));
+	grid-template: 1fr / repeat(auto-fit, minmax(200px, 1fr));
 	grid-gap: 20px;
 }
 
-.about__signature {
-	background: grey;
-}
-
-.main__entry > img {  
+.about__groupContent > div > img {  
 	display: block;
 	margin: auto;
-	margin-bottom: 20px;
-	height: 200px;
 	aspect-ratio: 1;
+	margin-bottom: 20px;
 }
-
+.aboutUs__item > img { width: 250px; }
+.ourSignature__item > img { width: 200px; }
 .main__entry > h2 { 
 	text-align: center;
 	color: rgba(var(--colo-20), 1); 
