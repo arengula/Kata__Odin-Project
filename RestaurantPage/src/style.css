@@ -4,8 +4,11 @@ p, section, img, ul, li {
 	margin: 0;
 }
 
+h1, h2 { font-family: Rubik; }
+p { font-family: Roboto; }
+
 :root {
-	--colo-20: 234, 40, 40;
+	--colo-20: 204, 44, 44;
 	--colo-80: 255, 255, 255;
 	--x-margin: 4%;
 	background: rgba(var(--colo-80), 1);

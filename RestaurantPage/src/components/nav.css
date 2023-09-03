@@ -1,5 +1,5 @@
 .nav {
-	height: 10vh;
+	height: 12vh;
 	background: rgba(var(--colo-20), 1);
 	display: flex;
 	align-items: center;
@@ -16,7 +16,7 @@
 	height: 100%;
 	background: rgba(var(--colo-20), 1);
 	border: 0px solid black;
-	padding: 5px 10px;
+	padding: 0px 10px;
 	color: rgba(var(--colo-80), 1);
 	font-weight: bold;
 }
@@ -38,7 +38,6 @@
 	color: rgba(var(--colo-20), 1);
 	border: 1px solid rgba(var(--colo-80), 1);
 	padding: 5px 10px;
-	border-radius: 8px;
 }
 
 .identity__text {
@@ -62,10 +61,4 @@
 	70% {transform: rotate(5deg); }
 	90% {transform: rotate(-5deg); }
 	100% {transform: rotate(0deg); }
-}
-
-@media (max-width: 750px) {
-	.identity__text{
-		display: none;
-	}
 }
