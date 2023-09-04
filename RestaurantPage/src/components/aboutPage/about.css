@@ -21,7 +21,7 @@
 }
 
 .contentImage {
-	aspect-ratio: 1;
+	aspect-ratio: 4/3;
 }
 	.contentImage--small {
 		width: 100px;
@@ -30,17 +30,26 @@
 		width: 200px;
 	}
 	.contentImage--large {
-		width: 400px;
+		width: 500px;
 	}
+
+.sectionHeading { font-size: 40px; }
+.sectionParagraph { 
+	font-size: 18px; 
+	text-align: justify;
+}
 
 main h2,
 main h3 {
 	color: rgba(var(--colo-20), 1);
 }
 
+.hero > section > h2 {
+	font-size: 40px;
+	color: rgba(var(--colo-80), 1);
+}
 
 .textBesideImage {
-	background: bisque;
 	display: flex;
 	padding-right: var(--x-margin);
 }
@@ -49,7 +58,6 @@ main h3 {
 	padding-left: var(--x-margin);
 	display: flex;
 	flex-flow: row-reverse;
-	text-align: right;
 }
 
 .textBesideImage,
@@ -58,32 +66,45 @@ main h3 {
 	gap: 50px;
 }
 
-.textBesideImage--reverse > div > h2,
-.textBesideImage > div > h2 {
+.textBesideImage--reverse h2,
+.textBesideImage--reverse p,
+.textBesideImage h2,
+.textBesideImage p {
 	margin-bottom: 20px;
 }
 
-.hero > section > h2 {
-	font-size: 40px;
-	color: rgba(var(--colo-80), 1);
+
+.textBesideImage > div,
+.textBesideImage--reverse > div {
+	position: relative;
 }
 
-.sectionHeading { font-size: 40px; }
-.sectionParagraph { font-size: 18px; }
+.textBesideImage button,
+.textBesideImage--reverse button {
+	padding: 8px 15px;
+	border: 0px solid black;
+	background: rgba(var(--colo-20), 1);
+	font-weight: bold;
+	color: rgba(var(--colo-80), 1);
+}
+.WhoWeAre {
+	background: bisque;
+}
 
 .signature {
+	background: bisque;
 }
 
 .signature > div {
 	display: grid;
-	grid-template: 1fr / 1fr 1fr 1fr;
+	grid-template: 1fr / repeat(auto-fit, minmax(300px, 1fr));
 }
 
 .signatureItem > img {
 	border: 1px solid black;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 800px) {
 	.identity__text {
 		display: none;
 	}
@@ -102,18 +123,27 @@ main h3 {
 		width: 100%;
 		object-fit: cover;
 	}
-	.textBesideImage > div,
-	.textBesideImage--reverse > div {
+	.textBesideImage > div > *,
+	.textBesideImage--reverse > div > * {
 		text-align: center;
 	}
 
 	.textBesideImage .sectionHeading,
 	.textBesideImage--reverse .sectionHeading {
+		text-align: center;
 		margin-bottom: 0px;
+	}
+
+	.textBesideImage button,
+	.textBesideImage--reverse button {
+		position: absolute;
+		left: 50%;
+		transform: translate(-50%, 0%);
 	}
 
 	.textBesideImage .sectionParagraph,
 	.textBesideImage--reverse .sectionParagraph {
 		font-size: 16px;
+		padding: 0px 5vw;
 	}
 }

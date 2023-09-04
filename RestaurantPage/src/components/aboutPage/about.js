@@ -1,6 +1,6 @@
 import "./about.css"
 
-const ftTextBesideImage = (imageURL, imagePos, headingText, captionText) => {
+const ftTextBesideImage = (imageURL, imagePos, headingText, captionText, buttonText) => {
 	let section = document.createElement("section");
 	if(imagePos == "right") { 
 		section.classList.add("textBesideImage--reverse", headingText.split(" ").join(""));
@@ -24,6 +24,14 @@ const ftTextBesideImage = (imageURL, imagePos, headingText, captionText) => {
 	let textGroup = document.createElement("div");
 	textGroup.appendChild(heading);
 	textGroup.appendChild(caption);
+
+	if(buttonText != "") {
+		let button = document.createElement("button");
+		button.type = "button";
+		button.textContent = buttonText;
+		textGroup.appendChild(button);
+	}
+
 	section.appendChild(textGroup);
 
 	return section;
@@ -138,11 +146,14 @@ const renderPage = () => {
 	section.appendChild(ftTextBesideImage(
 		"https://st.focusedcollection.com/18590116/i/650/focused_224830810-stock-photo-head-chef-teaching-his-team.jpg", 
 		"left", "Who We Are", 
-		"We are the chef with passion on sharing amazing things from our homeland through our cooking."
+		"We are the chef with passion on sharing amazing things from our homeland through our cooking. We hope you will enjoy our cookings and give you a great impression of how Italian cuisines taste like!",
+		"Meet the chef"
 	));
 	section.appendChild(ftTextBesideImage(
-		"https://assets.architecturaldigest.in/photos/600837f1e6e1f64740188ee5/16:9/w_2560%2Cc_limit/Italian-food_1-1366x768.jpg", 
-		"right", "What We Do", "Lorem ipsum sit dolor amet"
+		"https://st.focusedcollection.com/18590116/i/650/focused_224830810-stock-photo-head-chef-teaching-his-team.jpg", 
+		"right", "What We Make", 
+		"We offer you a wide range of food and drinks from Italia. Pizza, Pastas, Wines, we make them all with our special extra touches.  Experience the taste you have never tasted before! You won't regret it!",
+		"See More"
 	));
 	section.appendChild(sect__signature);
 	section.appendChild(sect__callToAction);

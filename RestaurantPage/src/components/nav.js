@@ -1,5 +1,5 @@
 import "./nav.css"
-let menus = ["News", "Menu"]
+let menus = ["Chefs", "Menu"]
 let logoURL = "https://cdn-icons-png.flaticon.com/512/483/483841.png"
 let container = document.createElement("section");
 
