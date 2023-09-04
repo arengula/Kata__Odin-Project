@@ -15,15 +15,34 @@
 
 .hero__content {
 	position: absolute;
-	top: 50%;
+	top: 75%;
 	left: 0%;
 	padding: 0px var(--x-margin);
 }
 
-@media (max-width: 600px) {
-	.about__main { 
-	display: flex;
-	gap: 20px;
-		flex-wrap: wrap;
+.contentImage {
+	aspect-ratio: 1;
+}
+	.contentImage--small {
+		width: 100px;
 	}
+	.contentImage--medium {
+		width: 250px;
+	}
+	.contentImage--large {
+		width: 400px;
+	}
+
+main h2,
+main h3 {
+	color: rgba(var(--colo-20), 1);
+}
+
+.hero > section > h2 {
+	font-size: 40px;
+	color: rgba(var(--colo-80), 1);
+}
+
+.signature > div {
+	display: flex;
 }
