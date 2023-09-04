@@ -1,4 +1,5 @@
 .hero {
+	color: white;
 	position: relative;
 	background: grey;
 	height: 70vh;
@@ -17,53 +18,6 @@
 	top: 50%;
 	left: 0%;
 	padding: 0px var(--x-margin);
-	display: flex;
-}
-
-.content__left {
-	color: white;
-	background: linear-gradient(0deg, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
-}
-.content__left > h2 { font-size: 64px; }
-.content__left > p { font-size: 20px; }
-
-article > div {
-	margin-bottom: 80px; 
-}
-
-.about { 
-	padding: 40px var(--x-margin); 
-}
-.about__sectionGroup > h2 {
-	background: rgba(var(--colo-80), 1);
-	font-size: 32px;
-	text-align: center;
-	color: rgba(var(--colo-20), 1); 
-}
-
-.about__groupContent { 
-	padding: 0px 50px;
-	display: grid;
-	grid-template: 1fr / repeat(auto-fit, minmax(200px, 1fr));
-	grid-gap: 20px;
-}
-
-.about__groupContent > div > img {  
-	display: block;
-	margin: auto;
-	aspect-ratio: 1;
-	margin-bottom: 20px;
-}
-.aboutUs__item > img { width: 250px; }
-.ourSignature__item > img { width: 200px; }
-.main__entry > h2 { 
-	text-align: center;
-	color: rgba(var(--colo-20), 1); 
-	font-size: 24px; 
-}
-
-.main__entry > p {
-	text-align: center;
 }
 
 @media (max-width: 600px) {
