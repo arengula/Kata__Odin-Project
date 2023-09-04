@@ -27,7 +27,7 @@
 		width: 100px;
 	}
 	.contentImage--medium {
-		width: 250px;
+		width: 200px;
 	}
 	.contentImage--large {
 		width: 400px;
@@ -38,11 +38,82 @@ main h3 {
 	color: rgba(var(--colo-20), 1);
 }
 
+
+.textBesideImage {
+	background: bisque;
+	display: flex;
+	padding-right: var(--x-margin);
+}
+
+.textBesideImage--reverse {
+	padding-left: var(--x-margin);
+	display: flex;
+	flex-flow: row-reverse;
+	text-align: right;
+}
+
+.textBesideImage,
+.textBesideImage--reverse {
+	align-items: center;
+	gap: 50px;
+}
+
+.textBesideImage--reverse > div > h2,
+.textBesideImage > div > h2 {
+	margin-bottom: 20px;
+}
+
 .hero > section > h2 {
 	font-size: 40px;
 	color: rgba(var(--colo-80), 1);
 }
 
+.sectionHeading { font-size: 40px; }
+.sectionParagraph { font-size: 18px; }
+
+.signature {
+}
+
 .signature > div {
-	display: flex;
+	display: grid;
+	grid-template: 1fr / 1fr 1fr 1fr;
+}
+
+.signatureItem > img {
+	border: 1px solid black;
+}
+
+@media (max-width: 700px) {
+	.identity__text {
+		display: none;
+	}
+
+	.textBesideImage,
+	.textBesideImage--reverse {
+		flex-wrap: wrap;
+		justify-content: center;
+		padding: 0px;
+		padding-bottom: 50px;
+	}
+
+	.textBesideImage > img,
+	.textBesideImage--reverse > img{
+		aspect-ratio: 3 / 2;
+		width: 100%;
+		object-fit: cover;
+	}
+	.textBesideImage > div,
+	.textBesideImage--reverse > div {
+		text-align: center;
+	}
+
+	.textBesideImage .sectionHeading,
+	.textBesideImage--reverse .sectionHeading {
+		margin-bottom: 0px;
+	}
+
+	.textBesideImage .sectionParagraph,
+	.textBesideImage--reverse .sectionParagraph {
+		font-size: 16px;
+	}
 }
