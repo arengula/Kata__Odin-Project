@@ -154,7 +154,7 @@ const renderPage = () => {
 	section.appendChild(ftTextBesideImage(
 		"https://www.eatthis.com/wp-content/uploads/sites/4/2020/05/chef-cooking.jpg?quality=82&strip=1", 
 		"right", "What We Make", 
-		"We offer you a wide range of food and drinks from Italia. Pizza, Pastas, Wines, we make them all with our special extra touches.  Experience the taste you have never tasted before! You won't regret it!",
+		"We offer you a wide range of food and drinks from Italia. Pizza, Pastas, Wines, we make them all with our special extra touches.  Experience the taste you won't either forgetti or regretti!",
 		"See More"
 	));
 	section.appendChild(sect__signature);

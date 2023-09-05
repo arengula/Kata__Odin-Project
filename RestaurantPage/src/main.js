@@ -1,10 +1,12 @@
 import "./style.css"
 import navbar from "./components/nav.js"
 import about from "./components/aboutPage/about.js"
-
+import order from "./components/orderPage/order.js"
+import chef from "./components/chefPage/chef.js"
+import menu from "./components/menuPage/menu.js"
 
 const mainPage = (() => {
-	let pages = [about]
+	let pages = [about, chef, menu, order]
 	let root = document.getElementById("root")
 
 	const switchPage = (pageNumber) => {
