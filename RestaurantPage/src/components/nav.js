@@ -29,6 +29,7 @@ const makeCallToAction = () => {
 	let button = document.createElement("button");
 	button.type = "button";
 	button.textContent = "Order now"
+	button.id = "nav-OrderNow"
 	button.addEventListener("click", () => {
 		alert("Thank you for booking us!")
 	})

@@ -32,6 +32,11 @@ const setListeners = () => {
 		mainPage.switchPage(3);
 		console.log("whhee")
 	})
+	document.getElementById("nav-OrderNow").addEventListener(
+		"click", () => {
+		mainPage.switchPage(3);
+		console.log("whhee")
+	})
 }
 
 function main() {

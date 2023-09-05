@@ -80,6 +80,13 @@ main h3 {
 	font-weight: bold;
 	color: rgba(var(--colo-80), 1);
 }
+
+#OrderNow:hover,
+#MeetTheChef:hover, 
+#SeeMore:hover {
+	filter: brightness(120%);
+}
+
 .WhoWeAre {
 	background: cornsilk;
 }
