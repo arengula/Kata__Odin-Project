@@ -27,6 +27,7 @@ const ftTextBesideImage = (imageURL, imagePos, headingText, captionText, buttonT
 
 	if(buttonText != "") {
 		let button = document.createElement("button");
+		button.id = buttonText.split(" ").join("");
 		button.type = "button";
 		button.textContent = buttonText;
 		textGroup.appendChild(button);
@@ -106,6 +107,7 @@ const sect__callToAction = (() => {
 	section.appendChild(paragraph);
 
 	let button = document.createElement("button");
+	button.id = "OrderNow"
 	button.type = "button"
 	button.textContent = "Order now"
 	section.appendChild(button);
@@ -147,7 +149,7 @@ const renderPage = () => {
 		"https://st.focusedcollection.com/18590116/i/650/focused_224830810-stock-photo-head-chef-teaching-his-team.jpg", 
 		"left", "Who We Are", 
 		"We are the chef with passion on sharing amazing things from our homeland through our cooking. We hope you will enjoy our cookings and give you a great impression of how Italian cuisines taste like!",
-		"Meet the chef"
+		"Meet The Chef"
 	));
 	section.appendChild(ftTextBesideImage(
 		"https://www.eatthis.com/wp-content/uploads/sites/4/2020/05/chef-cooking.jpg?quality=82&strip=1", 
