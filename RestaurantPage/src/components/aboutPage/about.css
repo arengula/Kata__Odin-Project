@@ -71,6 +71,7 @@ main h3 {
 	position: relative;
 }
 
+.callToAction button,
 .textBesideImage button,
 .textBesideImage--reverse button {
 	padding: 8px 15px;
@@ -88,24 +89,34 @@ main h3 {
 	background: cornsilk;
 }
 
+.callToAction *,
 .signature .sectionHeading,
 .signature  p,
 .signature h3 {
 	text-align: center;
 }
 
-.signature > p {
+.signature > p,
+.callToAction > p {
 	margin-bottom: 20px;
 }
 
 .signatureItems {
 	display: grid;
 	grid-template: 1fr / repeat(auto-fit, minmax(300px, 1fr));
+	grid-gap: 20px;
 }
 
 .signature__item > img {
 	display: block;
 	border: 2px solid burlywood;
+	margin: auto;
+}
+
+.callToAction { padding: 50px var(--x-margin); }
+
+.callToAction button { 
+	display: block;
 	margin: auto;
 }
 
