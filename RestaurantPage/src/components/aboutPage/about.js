@@ -71,7 +71,7 @@ const sect__signature = (() => {
 	paragraph.textContent = "We only serve the best. Here are the best of our best!";
 	section.appendChild(paragraph);
 
-	let signatureItems = document.createElement("div");
+	let signatureItems = document.createElement("section");
 	signatureItems.classList.add("signatureItems")
 	let sources = [
 		["https://thecozycook.com/wp-content/uploads/2022/04/Lasagna-Recipe-f.jpg", 
@@ -150,7 +150,7 @@ const renderPage = () => {
 		"Meet the chef"
 	));
 	section.appendChild(ftTextBesideImage(
-		"https://st.focusedcollection.com/18590116/i/650/focused_224830810-stock-photo-head-chef-teaching-his-team.jpg", 
+		"https://www.eatthis.com/wp-content/uploads/sites/4/2020/05/chef-cooking.jpg?quality=82&strip=1", 
 		"right", "What We Make", 
 		"We offer you a wide range of food and drinks from Italia. Pizza, Pastas, Wines, we make them all with our special extra touches.  Experience the taste you have never tasted before! You won't regret it!",
 		"See More"

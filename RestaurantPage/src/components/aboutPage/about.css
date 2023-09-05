@@ -20,18 +20,10 @@
 	padding: 0px var(--x-margin);
 }
 
-.contentImage {
-	aspect-ratio: 4/3;
-}
-	.contentImage--small {
-		width: 100px;
-	}
-	.contentImage--medium {
-		width: 200px;
-	}
-	.contentImage--large {
-		width: 500px;
-	}
+.contentImage { aspect-ratio: 4/3; }
+	.contentImage--small { width: 100px; }
+	.contentImage--medium { width: 200px; }
+	.contentImage--large { width: 500px; }
 
 .sectionHeading { font-size: 40px; }
 .sectionParagraph { 
@@ -88,20 +80,33 @@ main h3 {
 	color: rgba(var(--colo-80), 1);
 }
 .WhoWeAre {
-	background: bisque;
+	background: cornsilk;
 }
 
 .signature {
-	background: bisque;
+	padding: 50px var(--x-margin);
+	background: cornsilk;
 }
 
-.signature > div {
+.signature .sectionHeading,
+.signature  p,
+.signature h3 {
+	text-align: center;
+}
+
+.signature > p {
+	margin-bottom: 20px;
+}
+
+.signatureItems {
 	display: grid;
 	grid-template: 1fr / repeat(auto-fit, minmax(300px, 1fr));
 }
 
-.signatureItem > img {
-	border: 1px solid black;
+.signature__item > img {
+	display: block;
+	border: 2px solid burlywood;
+	margin: auto;
 }
 
 @media (max-width: 800px) {
