@@ -19,25 +19,30 @@ const mainPage = (() => {
 })()
 
 const setListeners = () => {
+	document.getElementById("Identity").addEventListener(
+		"click", () => { mainPage.switchPage(0);
+	})
+
+	document.getElementById("Chefs").addEventListener(
+		"click", () => { mainPage.switchPage(1);
+	})
+
 	document.getElementById("MeetTheChef").addEventListener(
-		"click", () => {
-		mainPage.switchPage(1);
-		console.log("whhee")
+		"click", () => { mainPage.switchPage(1);
 	})
+
 	document.getElementById("SeeMore").addEventListener(
-		"click", () => {
-		mainPage.switchPage(2);
-		console.log("whhee")
+		"click", () => { mainPage.switchPage(2);
 	})
+	document.getElementById("Menu").addEventListener(
+		"click", () => { mainPage.switchPage(2);
+	})
+
 	document.getElementById("OrderNow").addEventListener(
-		"click", () => {
-		mainPage.switchPage(3);
-		console.log("whhee")
+		"click", () => { mainPage.switchPage(3);
 	})
 	document.getElementById("nav-OrderNow").addEventListener(
-		"click", () => {
-		mainPage.switchPage(3);
-		console.log("whhee")
+		"click", () => { mainPage.switchPage(3);
 	})
 }
 

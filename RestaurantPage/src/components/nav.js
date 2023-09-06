@@ -5,6 +5,7 @@ let container = document.createElement("section");
 
 const makeSiteIdentity = () => {
 	let section = document.createElement("section");
+	section.id = "Identity";
 
 	let siteLogo = document.createElement("img");
 	siteLogo.src = logoURL;
@@ -30,10 +31,6 @@ const makeCallToAction = () => {
 	button.type = "button";
 	button.textContent = "Order now"
 	button.id = "nav-OrderNow"
-	button.addEventListener("click", () => {
-		alert("Thank you for booking us!")
-	})
-	
 	return button;
 }
 
@@ -46,8 +43,8 @@ const makeSiteMenuButtons = () => {
 
 	menus.forEach((val) => {
 		let button = buttonTemplate.cloneNode(true);
+		button.id = val;
 		button.textContent = val;
-		button.onclick = () => { console.log(`This is ${val} button`); }
 		section.appendChild(button);
 	})
 
