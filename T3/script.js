@@ -174,8 +174,8 @@ const PAGE_MANAGER = (() => {
 			return
 		}
 
-		if(game_info[1] == 0) { GAME_info.textContent = "It's a Draw! But still, you suck!";
-		} else { GAME_info.textContent = (game_info[1] == 1? "You Win!": "You Suck!")
+		if(game_info[1] == 0) { GAME_info.textContent = "It's a Draw!";
+		} else { GAME_info.textContent = (game_info[1] == 1? "You Win!": "You lose! :(")
 		}
 	}
 
@@ -218,7 +218,7 @@ const PAGE_MANAGER = (() => {
 		updateBoard();
 	}
 
-	const handleDiffButtons = (diff, thing) => {
+	const handleDiffButtons = (diff) => {
 		let prev_diff = GAMEAI.tellDepth();
 		switch(prev_diff) {
 			case 0: diff_buttons[0].firstChild.classList.remove("button--active-light"); break;
