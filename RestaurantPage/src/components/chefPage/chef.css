@@ -1,0 +1,28 @@
+.main__chef {
+	padding: 30px var(--x-margin);
+}
+
+.main__chef > h2, 
+.main__chef > p {
+	text-align: center;
+}
+
+.chef-list {
+	margin-top: 30px;
+	display: grid;
+	grid-gap: 20px;
+	grid-template: 1fr / repeat(auto-fit, minmax(400px, 1fr));
+}
+
+.chef__info { 
+	text-align: center;
+}
+
+.chef > img { 
+	display: block;
+	margin: auto;
+	width: 69%;
+	aspect-ratio: 1;
+	object-fit: cover;
+	margin-bottom: 20px;
+}
