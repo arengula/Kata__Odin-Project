@@ -1,0 +1,61 @@
+.main__menu {
+	padding: 50px var(--x-margin);
+}
+
+.main__menu > h2,
+.main__menu > p {
+	text-align: center;
+}
+
+.menu__categoryEntry {
+	margin: 50px 0px;
+}
+
+.menu__categoryEntry > h3 {
+	padding: 10px 0px;
+	font-size: 32px;
+}
+.cards {
+	display: grid;
+	grid-template: 1fr / repeat(auto-fit, minmax(200px, 1fr));
+	grid-gap: 20px;
+}
+
+.card {
+	border: 1px solid rgba(var(--colo-20), 1);
+}
+.card img {
+	width: 100%;
+	aspect-ratio: 1;
+	object-fit: cover;
+}
+
+.card > .menuItem__details {
+	background: rgba(var(--colo-20), 1);
+	padding: 10px 20px;
+	transition: 0.5s color, 0.5s background;
+}
+
+.card:hover > .menuItem__details {
+	background: white;
+	color: rgba(var(--colo-20), 1);
+}
+
+.menuItem__details {
+	position: relative;
+	height: 100px;
+	color: rgba(var(--colo-80), 1);
+}
+
+.menuItem__details > .menuItem__name {
+	font-weight: bold;
+	font-size: 24px;
+}
+
+.menuItem__details > .menuItem__price {
+	position: absolute;
+	bottom: 5%; right: 5%;
+}
+.main__menu > h2 {
+	font-size: 40px;
+}
