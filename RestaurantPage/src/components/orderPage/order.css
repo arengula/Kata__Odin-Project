@@ -1,0 +1,39 @@
+.main__order {
+	padding: 50px var(--x-margin);
+}
+
+.main__order h2 {
+	font-size: 32px;
+}
+
+.main__order div {
+	margin-bottom: 20px;
+}
+
+.main__order > div > h2,
+.main__order > div > h3,
+.main__order > div > p {
+	text-align: center;
+}
+
+.orderApp__list {
+	padding: 20px 10vw;
+	display: grid;
+	grid-template: 1fr / repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.orderApp__item > h3 {
+	margin-top: 10px;
+	text-align: center;
+}
+
+.orderApp__item > img {
+	display: block;
+	margin: auto;
+	width: 50%;
+	aspect-ratio: 1;
+}
+
+.orderApp__item > img:hover {
+	filter: brightness(120%);
+}

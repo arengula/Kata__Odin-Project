@@ -52,7 +52,7 @@ function main() {
 			"Alessia Fontana", "Our humble waiter! Also a chef!"
 		],
 		[" https://i.pinimg.com/originals/09/cf/67/09cf67e51ba3ef20b02f96e0e7a55ca3.jpg ",
-			"Andreana Rosella", "Half chef, half waiter. She can do both!"
+			"Andreana Rosella", "Half chef, half waitress. She can do both!"
 		],
 	]
 
