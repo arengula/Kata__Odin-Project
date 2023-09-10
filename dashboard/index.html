@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title> Dashboard </title>
+	<link rel="stylesheet" href="./style.css">
+</head>
+<body class="dashboard">
+	<section class="dashboard__sidebar sidebar">
+		<section class="sidebar__site-brand sidebar__item--icon">
+			<img class="sidebar__icon icon icon--medium icon--force-white" src="https://cdn-icons-png.flaticon.com/512/2011/2011724.png" alt="site logo">
+			<h1 class="site-brand__name"> Gblog </h1>
+		</section>
+		<section class="sidebar__menu-list">
+			<section class="sidebar__menu-item sidebar__item--icon">
+				<img class="menu-item__icon icon icon--small icon--force-white" src="https://cdn-icons-png.flaticon.com/512/1946/1946436.png" alt="site logo">
+				<h1 class="menu-item__name"> Home </h1>
+			</section>
+			<section class="sidebar__menu-item sidebar__item--icon">
+				<img class="menu-item__icon icon icon--small icon--force-white" src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png" alt="site logo">
+				<h1 class="menu-item__name"> Profile </h1>
+			</section>
+			<section class="sidebar__menu-item sidebar__item--icon">
+				<img class="menu-item__icon icon icon--small icon--force-white" src="https://cdn-icons-png.flaticon.com/512/739/739235.png" alt="site logo">
+				<h1 class="menu-item__name"> Messages </h1>
+			</section>
+			<section class="sidebar__menu-item sidebar__item--icon">
+				<img class="menu-item__icon icon icon--small icon--force-white" src="https://cdn-icons-png.flaticon.com/512/565/565526.png" alt="site logo">
+				<h1 class="menu-item__name"> History </h1>
+			</section>
+			<section class="sidebar__menu-item sidebar__item--icon">
+				<img class="menu-item__icon icon icon--small icon--force-white" src="https://cdn-icons-png.flaticon.com/512/9741/9741176.png" alt="site logo">
+				<h1 class="menu-item__name"> Tasks </h1>
+			</section>
+			<section class="sidebar__menu-item sidebar__item--icon">
+				<img class="menu-item__icon icon icon--small icon--force-white" src="https://cdn-icons-png.flaticon.com/512/33/33308.png" alt="site logo">
+				<h1 class="menu-item__name"> Communities </h1>
+			</section>
+		</section>
+
+		<section class="sidebar__menu-list">
+			<section class="sidebar__menu-item sidebar__item--icon">
+				<img class="menu-item__icon icon icon--small icon--force-white" src="https://cdn-icons-png.flaticon.com/512/3524/3524577.png" alt="site logo">
+				<h1 class="menu-item__name"> Settings </h1>
+			</section>
+			<section class="sidebar__menu-item sidebar__item--icon">
+				<img class="menu-item__icon icon icon--small icon--force-white" src="https://cdn-icons-png.flaticon.com/512/3503/3503663.png" alt="site logo">
+				<h1 class="menu-item__name"> Support </h1>
+			</section>
+			<section class="sidebar__menu-item sidebar__item--icon">
+				<img class="menu-item__icon icon icon--small icon--force-white" src="https://cdn-icons-png.flaticon.com/512/786/786346.png" alt="site logo">
+				<h1 class="menu-item__name"> Privacy </h1>
+			</section>
+		</section>
+	</section>
+
+	<main class="dashboard__main main">
+		<section class="main__topbar topbar">
+			<section class="topbar__searchbar topbar__item searchbar">
+				<img class="searchbar__icon icon icon--small" src="https://cdn-icons-png.flaticon.com/512/149/149852.png" alt="search">
+				<input class="searchbar__input" type="" placeholder="Explore the vast world of creativity...">
+			</section>
+			<section class="topbar__item icon--red-dot">
+				<img class="topbar__icon icon icon--small" src="https://cdn-icons-png.flaticon.com/512/1827/1827347.png" alt="notification">
+				<div class="red-dot"></div>
+			</section>
+			<section class="topbar__item profile">
+				<img class="profile__picture pfp pfp--small" src="https://images.unsplash.com/photo-1484399172022-72a90b12e3c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTE0fHxwcm9maWxlJTIwZmVtYWxlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" alt="Me">
+				<h2 class="profile__name"></h2>
+			</section>
+		</section>
+
+		<section class="main__subtop">
+			<img class="profile__picture pfp pfp--medium" src="https://images.unsplash.com/photo-1484399172022-72a90b12e3c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTE0fHxwcm9maWxlJTIwZmVtYWxlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" alt="Me">
+			<section class="subtop__greet">
+				<p class="greet__word"> Hi There, </p>
+				<p class="greet__recipient"> Chelsea Larssen <span class="text--dim">(@Chelseee_)</span></p>
+			</section>
+			<section class="subtop__activity button-list">
+				<button class="activity__item button--attention">New</button>
+				<button class="activity__item button--attention">Upload</button>
+				<button class="activity__item button--attention">Share</button>
+			</section>
+		</section>
+
+		<section class="main__content">
+			<section class="content__left">
+				<h2 class="content__heading"> Your Projects </h2>
+				<section class="content__cards cards">
+					<section class="content-item cards-item cards__card">
+						<section class="card__content-wrapper">
+							<h3 class="content__subheading card__heading">Get Mother Drink!</h3>
+							<p class="content__paragraph card__paragraph">
+								Under the stars of the Sourthern Cross we live life our way. Life is
+								in perpetual motion and to slow down is to be left in the dust
+							</p>
+							<section class="card__action">
+								<img class="action__icon icon--small" src="https://cdn-icons-png.flaticon.com/512/159/159650.png" alt="Bookmark">
+								<img class="action__icon icon--small" src="https://cdn-icons-png.flaticon.com/512/159/159604.png" alt="View">
+								<img class="action__icon icon--small" src="https://cdn-icons-png.flaticon.com/512/929/929539.png" alt="Share">
+							</section>
+						</section>
+					</section>
+					<section class="content-item cards-item cards__card">
+						<section class="card__content-wrapper">
+							<h3 class="content__subheading card__heading">Mothaa</h3>
+							<p class="content__paragraph card__paragraph">
+								The infinite bounds of sunburnt land and barelling blue swells are limited
+								only by your imagination.
+							</p>
+							<section class="card__action">
+								<img class="action__icon icon--small" src="https://cdn-icons-png.flaticon.com/512/159/159650.png" alt="Bookmark">
+								<img class="action__icon icon--small" src="https://cdn-icons-png.flaticon.com/512/159/159604.png" alt="View">
+								<img class="action__icon icon--small" src="https://cdn-icons-png.flaticon.com/512/929/929539.png" alt="Share">
+							</section>
+						</section>
+					</section>
+					<section class="content-item cards-item cards__card">
+						<section class="card__content-wrapper">
+							<h3 class="content__subheading card__heading">Get Mother Drink!</h3>
+							<p class="content__paragraph card__paragraph">
+								Kick out the sand, pump up the tunes, and rip into some Mother.
+							</p>
+							<section class="card__action">
+								<img class="action__icon icon--small" src="https://cdn-icons-png.flaticon.com/512/159/159650.png" alt="Bookmark">
+								<img class="action__icon icon--small" src="https://cdn-icons-png.flaticon.com/512/159/159604.png" alt="View">
+								<img class="action__icon icon--small" src="https://cdn-icons-png.flaticon.com/512/929/929539.png" alt="Share">
+							</section>
+						</section>
+					</section>
+					<section class="content-item cards-item cards__card">
+						<section class="card__content-wrapper">
+							<h3 class="content__subheading card__heading">Mother Energy Drink</h3>
+							<p class="content__paragraph card__paragraph">
+								Crisp and cool with a kaleidoscope blend of flavours, it'll keep the
+								fast times spinning morning, noon, and night.
+							</p>
+							<section class="card__action">
+								<img class="action__icon icon--small" src="https://cdn-icons-png.flaticon.com/512/159/159650.png" alt="Bookmark">
+								<img class="action__icon icon--small" src="https://cdn-icons-png.flaticon.com/512/159/159604.png" alt="View">
+								<img class="action__icon icon--small" src="https://cdn-icons-png.flaticon.com/512/929/929539.png" alt="Share">
+							</section>
+						</section>
+					</section>
+					<section class="content-item cards-item cards__card">
+						<section class="card__content-wrapper">
+							<h3 class="content__subheading card__heading">Mother Drink</h3>
+							<p class="content__paragraph card__paragraph">
+								Mother is calling. Pursue your dreams. Search for adventure.
+								Get out there and let the good times flow!
+							</p>
+							<section class="card__action">
+								<img class="action__icon icon--small" src="https://cdn-icons-png.flaticon.com/512/159/159650.png" alt="Bookmark">
+								<img class="action__icon icon--small" src="https://cdn-icons-png.flaticon.com/512/159/159604.png" alt="View">
+								<img class="action__icon icon--small" src="https://cdn-icons-png.flaticon.com/512/929/929539.png" alt="Share">
+							</section>
+						</section>
+					</section>
+				</section>
+			</section>
+			<section class="content__right">
+				<section class="right__content-item">
+					<h2 class="content__heading">Announcements</h2>
+					<section class="content__list">
+						<section class="content-item list-item">
+							<h3 class="content__subheading">Site Maintenance</h3>
+							<p class="content__paragraph">
+								Business is Important <br>
+								Business is Professional
+							</p>
+						</section>
+						<section class="content-item list-item">
+							<h3 class="content__subheading">Community Share Day</h3>
+							<p class="content__paragraph">
+								Business is the engine on the car that drive us to our journey
+							</p>
+						</section>
+						<section class="content-item list-item">
+							<h3 class="content__subheading">Updated Privacy Policy</h3>
+							<p class="content__paragraph">
+								Welcome to the seminar of Business 101
+							</p>
+						</section>
+					</section>
+				</section>
+				<section class="right__content-item">
+					<h2 class="content__heading trending">Trending</h2>
+					<section class="content__list trending__list">
+						<section class="content-item list-item trending__item">
+							<img class="trending__picture pfp pfp--small" src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGVyc29ufGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" alt="Me">
+							<section class="trending__text">
+								<h3 class="content__subheading">@tegan</h3>
+								<p class="content__paragraph"> World Peace Builder </p>
+							</section>
+						</section>
+						<section class="content-item list-item trending__item">
+							<img class="trending__picture pfp pfp--small" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGVyc29ufGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" alt="Me">
+							<section class="trending__text">
+								<h3 class="content__subheading">@morgan</h3>
+								<p class="content__paragraph"> Super Cool Project </p>
+							</section>
+						</section>
+						<section class="content-item list-item trending__item">
+							<img class="trending__picture pfp pfp--small" src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cGVyc29ufGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" alt="Me">
+							<section class="trending__text">
+								<h3 class="content__subheading">@kendall</h3>
+								<p class="content__paragraph"> Life Changing App </p>
+							</section>
+						</section>
+						<section class="content-item list-item trending__item">
+							<img class="trending__picture pfp pfp--small" src="https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cGVyc29ufGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" alt="Me">
+							<section class="trending__text">
+								<h3 class="content__subheading">@alex</h3>
+								<p class="content__paragraph"> No Traffic Maker </p>
+							</section>
+						</section>
+					</section>
+				</section>
+			</section>
+		</section>
+	</main>
+</body>
+</html>
