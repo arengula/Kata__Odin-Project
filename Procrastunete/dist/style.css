@@ -1,0 +1,110 @@
+* {
+  color: white;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.intro {
+  position: relative;
+  z-index: 20;
+  background: #581eb5;
+  padding: 40px 3%;
+  text-align: center;
+}
+.intro > p {
+  margin-bottom: 20px;
+}
+.intro > button {
+  border: 0px solid black;
+  background: #9665e5;
+  padding: 10px 20px;
+  display: block;
+  margin: auto;
+}
+
+.intro__title {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  gap: 20px;
+}
+.intro__title > h1 {
+  font-size: 48px;
+}
+.intro__title > img {
+  width: 50px;
+}
+
+#newTrack {
+  background: lightgray;
+  padding: 20px 3%;
+  width: 100%;
+  position: relative;
+  z-index: 0;
+}
+
+#newTrackForm {
+  background: rgb(234, 234, 234);
+  margin: auto;
+  width: 500px;
+  padding: 20px;
+  border: 1px solid rgb(88, 30, 181);
+}
+#newTrackForm label, #newTrackForm input, #newTrackForm h2, #newTrackForm button {
+  color: rgb(88, 30, 181);
+}
+#newTrackForm > h2 {
+  text-align: center;
+}
+#newTrackForm > * {
+  margin-bottom: 10px;
+}
+#newTrackForm input {
+  padding: 10px;
+  border: 1px solid rgb(88, 30, 181);
+  background: white;
+}
+
+.form__entry {
+  display: block;
+}
+.form__entry > input {
+  width: 100%;
+  display: inline;
+}
+
+.form__subentry {
+  display: block;
+}
+
+.form__utils > button {
+  border: 1px solid rgb(88, 30, 181);
+  background: white;
+  display: block;
+  margin: auto;
+  padding: 5px 10px;
+}
+
+.inputWarning {
+  padding: 5px;
+  border: 1px solid red;
+  background: #ffcccc;
+}
+.inputWarning > p {
+  color: red;
+}
+
+button:hover {
+  filter: brightness(120%);
+}
+
+.icon {
+  aspect-ratio: 1;
+}
+
+.icon--blackToWhite {
+  filter: invert(100%);
+}
+
+/*# sourceMappingURL=style.css.map */

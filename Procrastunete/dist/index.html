@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JUUK</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<section class="intro">
+		<div class="intro__title">
+			<img class="icon--blackToWhite" src="https://cdn-icons-png.flaticon.com/512/461/461146.png" alt="Logo">
+			<h1>Procrastunete</h1>
+		</div>
+		<p>Don't lose track of what you wanted to listen!</p>
+		<button id="intro__CTA"> <a href="#newTrack">Note Today!</a> </button>
+	</section>
+	<main>
+		<section class="tracks">
+			<h2 class="tracks__title">Your Tracks</h2>
+			<section class="tracks__list" id="trackContainer">
+			</section>
+		</section>
+		<section id="newTrack">
+			<form action="" id="newTrackForm">
+				<h2> New Track </h2>
+				<div class="form__entry">
+					<label for="trackTitle"> Title</label>
+					<input type="text" id="trackTitle" 
+						minlength= "1"
+						placeholder="Enter track's title"
+						required 
+					>
+					<div id="WARN_trackTitle"></div>
+				</div>
+				<div class="form__entry">
+					<label for="trackTitle"> Artist</label>
+					<input type="text" id="trackArtist"
+						minlength= "1"
+						placeholder="Enter track's artist"
+						required 
+					>
+					<div id="WARN_trackArtist"></div>
+				</div>
+				<div class="form__entry">
+					<label for="trackTitle"> Duration </label>
+					<div class="form__subentry">
+						<input type="number" id="trackDuration-min" 
+							min="0"
+							max="999"
+							required
+						>
+						<label for="trackTitle">Minutes</label>
+						<div id="WARN_trackDuration-min"></div>
+					</div>
+					<div class="form__subentry">
+						<input type="number" id="trackDuration-sec" 
+							min="0"
+							max="59"
+							required
+						>
+						<label for="trackTitle">Seconds</label>
+						<div id="WARN_trackDuration-sec"></div>
+					</div>
+				</div>
+				<div class="form__utils"> 
+					<button class="form__submit" type="button" id="submit_addTrack"> Confirm </button>
+				</div>
+			</form>
+		</section>
+	</main>
+	<script src="bundle.js"> </script>
+</body>
+</html>
