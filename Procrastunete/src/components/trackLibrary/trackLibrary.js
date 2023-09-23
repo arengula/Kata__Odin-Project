@@ -116,16 +116,15 @@ const inputHandler = (() => {
 
 export default (() => {
 	const inputRoutine = () => {
-		console.log("ok")
 		let validationResult = inputHandler.validate();
 		let valid = true;
 		validationResult.forEach((result) => {
 			let selectedWarnElem = document.getElementById(`WARN_${result.id}`);
-			
+			selectedWarnElem.innerHTML = "";
+
 			for(let state in result.validity) {
 				if(result.validity[state] == true && state != "valid") {
 					valid = false;
-					selectedWarnElem.innerHTML = "";
 					selectedWarnElem.appendChild(
 						ftInputWarning(state)
 					);
