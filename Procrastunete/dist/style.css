@@ -106,4 +106,15 @@ button:hover {
   filter: invert(100%);
 }
 
+.trackEntry {
+  display: flex;
+}
+.trackEntry p {
+  color: rgb(88, 30, 181);
+}
+.trackEntry > img {
+  aspect-ratio: 1;
+  height: 300px;
+}
+
 /*# sourceMappingURL=style.css.map */

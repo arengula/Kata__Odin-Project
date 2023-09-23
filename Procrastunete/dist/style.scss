@@ -112,3 +112,14 @@ button:hover { filter: brightness(120%); }
 .icon { aspect-ratio: 1; }
 .icon--blackToWhite { filter: invert(100%); }
 
+.trackEntry {
+	display: flex;
+
+	p {
+		color: $col-80;
+	}
+	> img {
+		aspect-ratio: 1;
+		height: 300px;
+	}
+}

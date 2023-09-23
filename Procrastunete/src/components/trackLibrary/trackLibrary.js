@@ -20,7 +20,7 @@ const ftTrackEntry = (trackData) => {
 
 	let infoRight = document.createElement("div");
 	let trackDuration = document.createElement("p");
-	trackDuration.textContent = `${trackData["trackDuration-min"]}:${trackData["trackDuration-sec"]}`
+	trackDuration.textContent = `${trackData["trackDuration-min"]}:${String(trackData["trackDuration-sec"]).padStart(2, '0')}`;
 	infoRight.appendChild(trackDuration);
 
 	trackInfo.appendChild(infoLeft);
