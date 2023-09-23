@@ -1,39 +1,34 @@
 import DBHandler from "./DBHandler/DBHandler.js"
 
-const renderer = () => {
-	const render = () => {
+const ftTrackEntry = (trackData) => {
+	let section = document.createElement("div");
+	section.classList.add("trackEntry");
 
-	}
+	let img = document.createElement("img");
+	img.src = "https://images.unsplash.com/photo-1695239510467-f1e93d649c2b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw1fHx8ZW58MHx8fHx8&auto=format&fit=crop&w=500&q=60";
+	section.appendChild(img);
 
-	return {render}
+	let trackInfo = document.createElement("div");
+	let infoLeft = document.createElement("div");
+	let trackTitle = document.createElement("p");
+	let trackArtist = document.createElement("p");
+	
+	trackTitle.textContent = trackData["trackTitle"];
+	trackArtist.textContent = trackData["trackArtist"];
+	infoLeft.appendChild(trackTitle);
+	infoLeft.appendChild(trackArtist);
+
+	let infoRight = document.createElement("div");
+	let trackDuration = document.createElement("p");
+	trackDuration.textContent = `${trackData["trackDuration-min"]}:${trackData["trackDuration-sec"]}`
+	infoRight.appendChild(trackDuration);
+
+	trackInfo.appendChild(infoLeft);
+	trackInfo.appendChild(infoRight);
+	section.appendChild(trackInfo);
+
+	return section
 }
-
-const inputHandler = (() => {
-	let formLabels = [
-		"trackTitle",
-		"trackArtist",
-		"trackDuration-min",
-		"trackDuration-sec",
-	]
-
-	const validate = () => {
-		let result = []
-		formLabels.forEach((id) => {
-			let elem = document.getElementById(id);
-			result.push({
-				id: id,
-				validity: elem.validity
-			});
-		})
-		return result;
-	}
-
-	const sanitize = (input) => {
-		return true;
-	}
-
-	return {validate, sanitize}
-})()
 
 const ftInputWarning = (state) => { 
 	let section = document.createElement("div");
@@ -66,14 +61,64 @@ const ftInputWarning = (state) => {
 	return section;
 }
 
+const trackRenderer = (() => {
+	const ROOT = document.getElementById("trackContainer");
+
+	const render = () => {
+		ROOT.innerHTML = ""
+		console.log(DBHandler.getTracks())
+		DBHandler.getTracks().forEach((track) => {
+			ROOT.appendChild(ftTrackEntry(track))
+		})
+	}
+
+	return {render}
+})()
+
+const inputHandler = (() => {
+	let formLabels = [
+		"trackTitle",
+		"trackArtist",
+		"trackDuration-min",
+		"trackDuration-sec",
+	]
+
+	const validate = () => {
+		let result = []
+		formLabels.forEach((id) => {
+			let elem = document.getElementById(id);
+			result.push({
+				id: id,
+				validity: elem.validity
+			});
+		})
+		return result;
+	}
+	
+	const getUserInput = () => {
+		let DATA = {}
+		formLabels.forEach((id) => {
+			let elem = document.getElementById(id);
+			DATA[id] = elem.value;
+		})
+		return DATA;
+	}
+
+	return {validate, getUserInput}
+})()
+
+
 export default (() => {
 	const inputRoutine = () => {
+		console.log("ok")
 		let validationResult = inputHandler.validate();
+		let valid = true;
 		validationResult.forEach((result) => {
 			let selectedWarnElem = document.getElementById(`WARN_${result.id}`);
 			
 			for(let state in result.validity) {
 				if(result.validity[state] == true && state != "valid") {
+					valid = false;
 					selectedWarnElem.innerHTML = "";
 					selectedWarnElem.appendChild(
 						ftInputWarning(state)
@@ -81,6 +126,11 @@ export default (() => {
 				}
 			}
 		})
+
+		if(valid) {
+			DBHandler.addTrack(inputHandler.getUserInput())
+			trackRenderer.render()
+		}
 	}
 
 	return {inputRoutine}
