@@ -112,14 +112,44 @@ button:hover { filter: brightness(120%); }
 .icon { aspect-ratio: 1; }
 .icon--blackToWhite { filter: invert(100%); }
 
+.tracks__title {
+	padding: 20px 0px;
+	text-align: center;
+	color: $col-80;
+}
+
 .trackEntry {
+	border: 1px solid $col-80;
 	display: flex;
+
 
 	p {
 		color: $col-80;
 	}
+
 	> img {
 		aspect-ratio: 1;
-		height: 300px;
+		height: 150px;
 	}
 }
+
+.trackInfo {
+	flex-grow: 1;
+	display: flex;
+	padding: 20px;
+	align-items: center;
+
+	> .trackInfo--left {
+		flex-grow: 1;
+	}
+
+	> .trackInfo--right {
+
+	}
+}
+
+.trackInfo__title {
+	font-weight: bold;
+	font-size: 24px;
+}
+

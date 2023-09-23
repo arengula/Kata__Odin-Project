@@ -9,17 +9,23 @@ const ftTrackEntry = (trackData) => {
 	section.appendChild(img);
 
 	let trackInfo = document.createElement("div");
-	let infoLeft = document.createElement("div");
+	trackInfo.classList.add("trackInfo");
+
 	let trackTitle = document.createElement("p");
+	trackTitle.classList.add("trackInfo__title");
 	let trackArtist = document.createElement("p");
-	
+	trackArtist.classList.add("trackInfo__artist");
 	trackTitle.textContent = trackData["trackTitle"];
 	trackArtist.textContent = trackData["trackArtist"];
+
+	let infoLeft = document.createElement("div");
+	infoLeft.classList.add("trackInfo--left");
 	infoLeft.appendChild(trackTitle);
 	infoLeft.appendChild(trackArtist);
 
 	let infoRight = document.createElement("div");
 	let trackDuration = document.createElement("p");
+	trackDuration.classList.add("trackInfo__duration");
 	trackDuration.textContent = `${trackData["trackDuration-min"]}:${String(trackData["trackDuration-sec"]).padStart(2, '0')}`;
 	infoRight.appendChild(trackDuration);
 
