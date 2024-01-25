@@ -1,0 +1,158 @@
+:root {
+    --main-color: #fff2d8;
+    --accent-color: #751c1c;
+}
+
+.icon {
+    aspect-ratio: 1;
+}
+
+.icon--small {
+    width: 20px;
+}
+
+.icon--medium {
+    width: 25px;
+}
+
+p,
+h1,
+h2,
+h3,
+div,
+section {
+    color: var(--accent-color);
+    padding: 0px;
+    margin: 0px;
+}
+
+h1,
+h2,
+h3 {
+    font-family: "Oswald";
+}
+
+p {
+    font-family: "Poppins";
+}
+
+.app {
+    display: grid;
+    grid-template: 1fr / 1fr 3fr;
+}
+
+
+.user__profile {
+    position: relative;
+    min-height: 100vh;
+    background: var(--accent-color);
+    padding: 20px;
+}
+
+.user__profile>* {
+    margin-bottom: 20px;
+}
+
+.user__detailItem {
+    padding: 0px 20px 0px;
+}
+
+.profile__name {
+    color: var(--main-color);
+    font-size: 2rem;
+}
+
+.profile__image {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 240px;
+    aspect-ratio: 1;
+}
+
+.profile__image>img {
+    width: 100%;
+    height: 100%;
+}
+
+.profile__wrapper {
+    position: sticky;
+    top: 10px;
+}
+
+.user__navigation {
+    position: sticky;
+    background: white;
+    filter: drop-shadow(0px 10px 5px rgba(0, 0, 0, 0.1));
+    top: 0;
+    display: flex;
+    width: 100%;
+    height: 50px;
+}
+
+.nav__item {
+    font-weight: bold;
+    text-decoration: none;
+    flex: 1;
+    border-bottom: 3px solid white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.nav__item:hover {
+    cursor: pointer;
+    border-bottom: 3px solid var(--accent-color);
+    transition: 0.5s border-bottom;
+}
+
+.record__header {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.record__header>img {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.record__header:hover>img {
+    opacity: 1;
+    pointer-events: all;
+    cursor: pointer;
+    transition: 0.5s opacity;
+}
+
+.record__heading {
+    font-size: 1.25rem;
+}
+
+.record__item {
+    margin-bottom: 20px;
+}
+
+.detail__recordHeader {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 10px;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+.detail__recordHeader>img {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.detail__recordHeader:hover>img {
+    opacity: 1;
+    pointer-events: all;
+    cursor: pointer;
+    transition: 0.5s opacity;
+}
+
+.detail__heading {
+    font-size: 2.25rem;
+}
