@@ -68,8 +68,9 @@ function RecordItem({ value, idx, editingIdx, setEditingIdx, setRecord }) {
 function RecordAddForm({ onSubmit, id }) {
     return (
         <form className="record__Addform" id={`form__${id}`} onSubmit={onSubmit}>
-            <input type="text" className="addForm__heading" />
-            <input type="text" className="addForm__timestamp" />
+            <input type="text" name="heading" className="addForm__heading" />
+            <input type="text" name="timestamp" className="addForm__timestamp" />
+            <input type="text" name="description" className="addForm__description" />
             <button
                 type='submit'
                 id={`form__${id}`}
@@ -86,7 +87,7 @@ function UserRecords({ records, recordHeading }) {
     return (
         <>
             <div className="detail__recordHeader">
-                <h2 className="detail__heading" id="user__Achievements"> {recordHeading} </h2>
+                <h2 className="detail__heading" id={`user__${recordHeading}`}> {recordHeading} </h2>
                 {!isAdding && (editingIdx == -1) ?
                     <img
                         src="https://cdn-icons-png.flaticon.com/512/11127/11127933.png"
@@ -107,7 +108,26 @@ function UserRecords({ records, recordHeading }) {
                 id={recordHeading}
                 onSubmit={(e) => {
                     e.preventDefault();
-                    setIsAdding(false);
+                    const newData = new FormData(e.target);
+                    const isAllFilled = (
+                        newData.get("heading") !== "" &&
+                        newData.get("timestamp") !== "" &&
+                        newData.get("description") !== ""
+                    )
+
+                    if (isAllFilled) {
+                        setRecordList([
+                            {
+                                heading: newData.get("heading"),
+                                timestamp: newData.get("timestamp"),
+                                description: newData.get("description")
+                            },
+                            ...recordList
+                        ])
+                        setIsAdding(false);
+                    } else {
+                        alert("Fill all prompts!")
+                    }
                 }} /> : <></>
             }
 
@@ -148,14 +168,33 @@ function App() {
                     </div>
                     <section className="profile__details">
                         <h1 className="profile__name"> Chelsea Larssen</h1>
+                        <p className="profile__description">
+                            A UI/UX and frontend developer with photography as her cup of tea
+                        </p>
                         <section className="profile__links">
                             <div className="linkItem">
-                                <img src="" alt="" className="link__logo" />
-                                <a href="" className="link__text"></a>
+                                <img
+                                    src="https://cdn-icons-png.flaticon.com/512/733/733609.png"
+                                    alt="Github"
+                                    className="link__logo icon icon--small filter--invert"
+                                />
+                                <a href="" className="link__text"> Check what I cooked! </a>
                             </div>
                             <div className="linkItem">
-                                <img src="" alt="" className="link__logo" />
-                                <a href="" className="link__text"></a>
+                                <img
+                                    src="https://cdn-icons-png.flaticon.com/512/2175/2175325.png"
+                                    alt="Behance"
+                                    className="link__logo icon icon--small filter--invert"
+                                />
+                                <a href="" className="link__text"> Feast your eyes! </a>
+                            </div>
+                            <div className="linkItem">
+                                <img
+                                    src="https://cdn-icons-png.flaticon.com/512/87/87390.png"
+                                    alt="Instagram"
+                                    className="link__logo icon icon--small filter--invert"
+                                />
+                                <a href="" className="link__text"> Let&apos;s be mutual! </a>
                             </div>
                         </section>
                     </section>
@@ -164,7 +203,7 @@ function App() {
             <section className="user__details">
                 <section className="user__navigation">
                     {
-                        ["Achievements", "Experiences", "Portofolio"].map((val, idx) => {
+                        ["Achievements", "Experiences", "Portfolio"].map((val, idx) => {
                             return (
                                 <a className="nav__item" key={idx} href={`/#user__${val}`}>
                                     <p>{val}</p>
@@ -206,26 +245,39 @@ function App() {
                                     timestamp: "2027",
                                     description: "A mid-to-professional bootcamp for photographers to further enhance the quality of their works. The bootcamp was held for 7 weeks and ended by producing 14 signature shoots to be presented at a public exhibition.",
                                 },
-                                {
-                                    heading: "Mesmerize",
-                                    timestamp: "2027",
-                                    description: "A mid-to-professional bootcamp for photographers to further enhance the quality of their works. The bootcamp was held for 7 weeks and ended by producing 14 signature shoots to be presented at a public exhibition.",
-                                },
-                                {
-                                    heading: "Mesmerize",
-                                    timestamp: "2027",
-                                    description: "A mid-to-professional bootcamp for photographers to further enhance the quality of their works. The bootcamp was held for 7 weeks and ended by producing 14 signature shoots to be presented at a public exhibition.",
-                                },
-                                {
-                                    heading: "Mesmerize",
-                                    timestamp: "2027",
-                                    description: "A mid-to-professional bootcamp for photographers to further enhance the quality of their works. The bootcamp was held for 7 weeks and ended by producing 14 signature shoots to be presented at a public exhibition.",
-                                },
                             ]
                         } />
                 </section>
+                <section className="user__detailItem">
+                    <div className="detail__recordHeader">
+                        <h2 className="detail__heading" id="user__Portfolio"> Portfolio </h2>
+                    </div>
+                    <p>DISCLAIMER: Photos owned by Jerry Zhang and borrowed from <a href="https://unsplash.com/@z734923105"> Unsplash </a></p>
+                    <div className="portfolio__wrapper">
+                        <img
+                            src="https://images.unsplash.com/photo-1670808951552-9d804d0033ef?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MjJ8fHxlbnwwfHx8fHw%3D"
+                            alt=""
+                        />
+                        <img
+                            src="https://images.unsplash.com/photo-1665219242102-06b259f21517?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MjN8fHxlbnwwfHx8fHw%3D"
+                            alt=""
+                        />
+                        <img
+                            src="https://images.unsplash.com/photo-1651649158857-cd940701f4b1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MzF8fHxlbnwwfHx8fHw%3D"
+                            alt=""
+                        />
+                        <img
+                            src="https://images.unsplash.com/photo-1597299840779-2264630a6842?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            alt=""
+                        />
+                        <img
+                            src="https://images.unsplash.com/photo-1582202779559-e11fe076c7be?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8ODN8fHxlbnwwfHx8fHw%3D"
+                            alt=""
+                        />
+                    </div>
+                </section>
             </section>
-        </div>
+        </div >
     )
 }
 
