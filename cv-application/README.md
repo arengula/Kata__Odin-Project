@@ -1,3 +1,12 @@
+# About
+This is a project based on https://www.theodinproject.com/lessons/node-path-react-new-cv-application
+
+## Related concepts
+- React state
+- React state immutability
+- React state management
+- React props
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
