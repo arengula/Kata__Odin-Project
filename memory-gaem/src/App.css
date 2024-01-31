@@ -1,0 +1,29 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.difficultySetter {
+    display: flex;
+    gap: 20px;
+}
+
+.difficulty__item>* {
+    pointer-events: none;
+}
+
+.difficulty__item {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.difficulty__indicator {
+    width: 30px;
+    aspect-ratio: 1;
+    background: grey;
+}
+
+.difficulty__indicator--on {
+    background: green;
+}
