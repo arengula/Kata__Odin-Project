@@ -4,11 +4,55 @@
 }
 
 .app__title {
-    font-size: 48px;
+    font-size: 3rem;
 }
 
 .app__header {
     text-align: center;
+}
+
+.app__main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.game__scoreboard {
+    display: flex;
+    gap: 20px;
+}
+
+.game__currentScore {
+    text-align: center;
+}
+
+.game__currentScoreValue {
+    font-size: 2rem;
+}
+
+.game__bestScore>p {
+    text-align: center;
+}
+
+.scoreboard__delimiter {
+    width: 3px;
+    background: black;
+}
+
+.scoreboard__heading {
+    font-weight: bold;
+}
+
+.scoreboard__item {
+    display: flex;
+    gap: 10px;
+}
+
+.scoreboard__score {
+    flex: 1;
+    text-align: right;
 }
 
 .difficultySetter {
@@ -27,7 +71,7 @@
 }
 
 .difficulty__indicator {
-    width: 30px;
+    width: 20px;
     aspect-ratio: 1;
     background: grey;
 }

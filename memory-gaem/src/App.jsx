@@ -57,21 +57,22 @@ function Scoreboard({ score }) {
         <section className="game__scoreboard">
             <div className="game__currentScore">
                 <p className="scoreboard__heading">Your Score</p>
-                <p> {current} </p>
+                <p className="game__currentScoreValue"> {current} </p>
             </div>
+            <div className="scoreboard__delimiter"></div>
             <div className="game__bestScore">
                 <p className="scoreboard__heading">Best Score</p>
                 <div className="scoreboard__item">
                     <p className="scoreboard__heading"> Easy </p>
-                    <p> {best.easy}</p>
+                    <p className="scoreboard__score"> {best.easy}</p>
                 </div>
                 <div className="scoreboard__item">
                     <p className="scoreboard__heading">Medium</p>
-                    <p> {best.medium}</p>
+                    <p className="scoreboard__score"> {best.medium}</p>
                 </div>
                 <div className="scoreboard__item">
                     <p className="scoreboard__heading">Hard</p>
-                    <p> {best.hard}</p>
+                    <p className="scoreboard__score"> {best.hard}</p>
                 </div>
             </div>
         </section>
