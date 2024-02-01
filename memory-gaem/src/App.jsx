@@ -6,28 +6,44 @@ function GameCards({ onCardSelect }) {
     const [cardList, setCardList] = useState({})
 
     useEffect(() => {
+        let isCancelled = false
         async function getCardList() {
             await fetch("https://picsum.photos/v2/list")
                 .then((response) => {
-                    if (response.ok) {
+                    if (response.ok && !isCancelled) {
                         return response.json();
                     }
                     return new Error("Failed to establish connection to API")
                 })
-                .then((response) => {
-                    setCardList(response)
-                })
-                .catch((err) => {
-                    console.log(err)
-                })
+                .then((response) => setCardList(response))
+                .catch((err) => console.log(err))
         }
 
         getCardList()
 
-        return function() {
-            1 + 1
-        }
+        return () => isCancelled = true;
     }, [])
+
+    /* Fisher-Yates (Knuth) Shuffle
+        Credit goes to @coolaj86 on https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+    */
+    function shuffle(array) {
+        let currentIndex = array.length, randomIndex;
+
+        // While there remain elements to shuffle.
+        while (currentIndex > 0) {
+
+            // Pick a remaining element.
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+
+            // And swap it with the current element.
+            [array[currentIndex], array[randomIndex]] = [
+                array[randomIndex], array[currentIndex]];
+        }
+
+        return array;
+    }
 
     return (
         <section className="cards">
@@ -37,7 +53,10 @@ function GameCards({ onCardSelect }) {
                         <div
                             className="card"
                             key={idx}
-                            onClick={(e) => onCardSelect(value.id)}
+                            onClick={(_) => {
+                                setCardList(shuffle(cardList))
+                                onCardSelect(value.id)
+                            }}
                         >
                             <img src={value.download_url}
                                 alt=""
@@ -158,28 +177,22 @@ function Game() {
                         case "easy":
                             if (bestScore.easy < currentScore) {
                                 setBestScore({
-                                    ...bestScore,
-                                    easy: currentScore,
-                                }
-                                )
+                                    ...bestScore, easy: currentScore,
+                                })
                             }
                             break;
                         case "medium":
                             if (bestScore.medium < currentScore) {
                                 setBestScore({
-                                    ...bestScore,
-                                    medium: currentScore,
-                                }
-                                )
+                                    ...bestScore, medium: currentScore,
+                                })
                             }
                             break;
                         case "hard":
                             if (bestScore.hard < currentScore) {
                                 setBestScore({
-                                    ...bestScore,
-                                    hard: currentScore,
-                                }
-                                )
+                                    ...bestScore, hard: currentScore,
+                                })
                             }
                             break;
                     }
