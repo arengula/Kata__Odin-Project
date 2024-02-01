@@ -30,6 +30,19 @@ function cardHistory(maxSize) {
     let historyHead = null;
     let historyTail = null;
 
+    const clear = () => {
+        console.log("cleaning...")
+        while (historyTail !== historyHead) {
+            historyHead.setPrev(null)
+            historyHead = historyHead.getNext()
+            historyHead.getPrev().setNext(null)
+        }
+        historyHead.setNext(null)
+        historyHead.setPrev(null)
+        historyHead = null
+        historyTail = null
+    }
+
     const add = (itemValue) => {
         const newItem = new historyItem(itemValue);
         let counter = 0;
@@ -68,7 +81,7 @@ function cardHistory(maxSize) {
         return -1;
     }
 
-    return { add }
+    return { add, clear }
 }
 
 export default cardHistory;

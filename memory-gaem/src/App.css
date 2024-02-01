@@ -3,6 +3,14 @@
     padding: 0px;
 }
 
+.app__title {
+    font-size: 48px;
+}
+
+.app__header {
+    text-align: center;
+}
+
 .difficultySetter {
     display: flex;
     gap: 20px;
@@ -26,4 +34,35 @@
 
 .difficulty__indicator--on {
     background: green;
+}
+
+.cards {
+    display: grid;
+    grid-template: 1fr/ 1fr 1fr 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.card {
+    padding: 10px;
+    border-radius: 20px;
+    border: 2px solid grey;
+    background: white;
+}
+
+.card>* {
+    pointer-events: none;
+}
+
+.card:hover {
+    filter: brightness(90%);
+    cursor: pointer;
+}
+
+.card__image {
+    aspect-ratio: 1;
+    width: 256px;
+}
+
+.card__author {
+    text-align: right;
 }

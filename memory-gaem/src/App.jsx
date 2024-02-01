@@ -2,7 +2,7 @@ import cardHistory from './game.js'
 import { useEffect, useState } from 'react'
 import './App.css'
 
-function GameCards() {
+function GameCards({ onCardSelect }) {
     const [cardList, setCardList] = useState({})
 
     useEffect(() => {
@@ -27,21 +27,26 @@ function GameCards() {
         return function() {
             1 + 1
         }
-    })
+    }, [])
 
     return (
         <section className="cards">
-            <div className="card">
-                {
-                    Array.from(cardList)
-                        .map((value, idx) => (
-                            <div key={idx}>
-                                {`${value.id} - ${value.author}`}
-                            </div>
-                        )
-                        )
-                }
-            </div>
+            {
+                Array.from(cardList)
+                    .map((value, idx) => (
+                        <div
+                            className="card"
+                            key={idx}
+                            onClick={(e) => onCardSelect(value.id)}
+                        >
+                            <img src={value.download_url}
+                                alt=""
+                                className="card__image"
+                            />
+                            <p className="card__author"> @{value.author}</p>
+                        </div>
+                    ))
+            }
         </section>
     )
 }
@@ -117,25 +122,70 @@ function Game() {
     // Easy : 3, Medium : 5, Hard : 8
     const [historySize, setHistorySize] = useState(3);
     const [currentScore, setCurrentScore] = useState(0);
+    const [currentMode, setCurrentMode] = useState("easy");
     const [bestScore, setBestScore] = useState({
         easy: 0, medium: 0, hard: 0,
     });
 
-    const hist = new cardHistory(historySize);
+    const [hist, setHist] = useState(new cardHistory(historySize));
 
     return (
         <section className="app__main">
             <DifficultyButtons onDiffChange={(difficulty) => {
+                /* Is there a more elegant way to do this? */
                 if (difficulty === "difficulty--easy" && historySize !== 3) {
+                    setCurrentMode("easy")
                     setHistorySize(3)
+                    setHist(new cardHistory(3))
                 } else if (difficulty === "difficulty--medium" && historySize !== 5) {
+                    setCurrentMode("medium")
                     setHistorySize(5)
+                    setHist(new cardHistory(5))
                 } else if (difficulty === "difficulty--hard" && historySize !== 8) {
+                    setCurrentMode("hard")
                     setHistorySize(8)
+                    setHist(new cardHistory(8))
                 }
+                setCurrentScore(0)
             }} />
             <Scoreboard score={{ best: bestScore, current: currentScore }} />
-            <GameCards />
+            <GameCards onCardSelect={(value) => {
+                const result = hist.add(value)
+                if (result === 0) setCurrentScore(currentScore + 1);
+                else {
+                    switch (currentMode) {
+                        case "easy":
+                            if (bestScore.easy < currentScore) {
+                                setBestScore({
+                                    ...bestScore,
+                                    easy: currentScore,
+                                }
+                                )
+                            }
+                            break;
+                        case "medium":
+                            if (bestScore.medium < currentScore) {
+                                setBestScore({
+                                    ...bestScore,
+                                    medium: currentScore,
+                                }
+                                )
+                            }
+                            break;
+                        case "hard":
+                            if (bestScore.hard < currentScore) {
+                                setBestScore({
+                                    ...bestScore,
+                                    hard: currentScore,
+                                }
+                                )
+                            }
+                            break;
+                    }
+                    hist.clear();
+                    setCurrentScore(0);
+                }
+            }} />
         </section>
     )
 }
