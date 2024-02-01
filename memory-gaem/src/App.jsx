@@ -1,5 +1,6 @@
-import cardHistory from './game.js'
 import { useEffect, useState } from 'react'
+import PropTypes from 'prop-types';
+import cardHistory from './game.js'
 import './App.css'
 
 function GameCards({ onCardSelect }) {
@@ -69,6 +70,8 @@ function GameCards({ onCardSelect }) {
         </section>
     )
 }
+GameCards.propTypes = { onCardSelect: PropTypes.func.isRequired }
+
 
 function Scoreboard({ score }) {
     const { current, best } = score;
@@ -97,6 +100,8 @@ function Scoreboard({ score }) {
         </section>
     )
 }
+Scoreboard.propTypes = { score: PropTypes.object.isRequired }
+
 
 function DifficultyButtons({ onDiffChange }) {
     return (
@@ -137,10 +142,11 @@ function DifficultyButtons({ onDiffChange }) {
         </section>
     )
 }
+DifficultyButtons.propTypes = { onDiffChange: PropTypes.func.isRequired }
+
 
 function Game() {
-    // Easy : 3, Medium : 5, Hard : 8
-    const [historySize, setHistorySize] = useState(3);
+    const [historySize, setHistorySize] = useState(5);
     const [currentScore, setCurrentScore] = useState(0);
     const [currentMode, setCurrentMode] = useState("easy");
     const [bestScore, setBestScore] = useState({
@@ -153,18 +159,18 @@ function Game() {
         <section className="app__main">
             <DifficultyButtons onDiffChange={(difficulty) => {
                 /* Is there a more elegant way to do this? */
-                if (difficulty === "difficulty--easy" && historySize !== 3) {
+                if (difficulty === "difficulty--easy" && historySize !== 5) {
                     setCurrentMode("easy")
-                    setHistorySize(3)
-                    setHist(new cardHistory(3))
-                } else if (difficulty === "difficulty--medium" && historySize !== 5) {
-                    setCurrentMode("medium")
                     setHistorySize(5)
                     setHist(new cardHistory(5))
-                } else if (difficulty === "difficulty--hard" && historySize !== 8) {
+                } else if (difficulty === "difficulty--medium" && historySize !== 12) {
+                    setCurrentMode("medium")
+                    setHistorySize(12)
+                    setHist(new cardHistory(12))
+                } else if (difficulty === "difficulty--hard" && historySize !== 17) {
                     setCurrentMode("hard")
-                    setHistorySize(8)
-                    setHist(new cardHistory(8))
+                    setHistorySize(17)
+                    setHist(new cardHistory(17))
                 }
                 setCurrentScore(0)
             }} />
