@@ -1,0 +1,48 @@
+.productCard {
+    padding: 1rem;
+    border: 2px solid black;
+    border-radius: 10px;
+    max-width: 280px;
+
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    &:hover {
+        cursor: pointer;
+        transition: 1s transform;
+        transform: scale(1.05);
+    }
+}
+
+.product__image {
+    border: 1px solid grey;
+    border-radius: 10px;
+    width: 100%;
+    aspect-ratio: 1;
+    background: white;
+
+    > img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.product__name,
+.product__price {
+    padding: 5px 0px;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.product__desc {
+    font-size: 14px;
+}
+.product__price {
+    text-align: right;
+
+    &::before {
+        content: "$";
+    }
+}
