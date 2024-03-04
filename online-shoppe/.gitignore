@@ -24,4 +24,4 @@ dist-ssr
 *.sw?
 
 # SASS generated files
-*.map.css
+*.css.map
