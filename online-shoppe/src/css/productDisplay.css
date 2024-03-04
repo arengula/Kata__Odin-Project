@@ -1,7 +1,7 @@
 .productDisplay {
   padding: 30px 10vw;
   display: grid;
-  grid-template: 1fr/repeat(auto-fit, minmax(180px, 1fr));
+  grid-template: 1fr/repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
   flex-wrap: wrap;
 }

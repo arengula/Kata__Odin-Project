@@ -13,7 +13,7 @@ const Card = function({title, price, description, image}) {
             </div>
             <p className="product__detail">
                 <p className="product__name">
-                    {title.length > 17? title.substring(0, 17) + "..": title}
+                    {title.length > 28? title.substring(0, 28) + "..": title}
                 </p>
                 <p className="product__desc">
                     {description.length > 50? 
