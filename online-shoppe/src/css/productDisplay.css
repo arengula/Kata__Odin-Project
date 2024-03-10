@@ -1,9 +1,0 @@
-.productDisplay {
-  padding: 30px 10vw;
-  display: grid;
-  grid-template: 1fr/repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-/*# sourceMappingURL=productDisplay.css.map */
