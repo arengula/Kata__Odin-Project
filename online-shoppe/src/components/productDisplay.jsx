@@ -1,0 +1,60 @@
+import { useState, useEffect } from "react";
+import "../styles/productDisplay.css"
+
+function ProductDisplay() {
+    const [items, setItems] = useState([])
+    const [err, setErr] = useState(null)
+
+    useEffect(() => {
+        fetch("https://fakestoreapi.com/products",
+            {mode: "cors"}
+        )
+            .then((res) => {
+                if(res.ok) {
+                    return res.json();
+                }
+                return new Error("Somehting when wrong");
+            })
+            .then((res) => {
+                setItems(res)
+            })
+            .catch((err) => {
+                setErr(err)
+            })
+    }, [])
+
+    function clampText(text, maxLength) {
+        return text.substring(0, maxLength) + 
+            (text.length > maxLength? "...": "")
+    }
+
+    return items.length == 0? (<p className="px-4 mx-0 mb-2">Fetching data...</p>):(
+        <section className="productDisplay px-4 mx-0 mb-2 grid">
+            <h1 className="my-3">Today's Offer</h1>
+            <div className="productDisplay__items">
+                {   
+                    items.map((item) => {
+                        const {id, title, description, price, image} = item
+                        return (
+                            <div key={id}>
+                                <div className="item__image mb-2">
+                                    <img 
+                                        src={image} 
+                                        alt={title}
+                                    />
+                                </div>
+                                <p className="item__name my-1"> {clampText(title, 17)} </p>
+                                <p className="item__description mb-5">
+                                    {clampText(description, 27)}
+                                </p>
+                                <p className="item__price my-0"> {price}</p>
+                            </div>
+                        );
+                    })
+                }
+            </div>
+        </section>
+    )
+}
+
+export default ProductDisplay;

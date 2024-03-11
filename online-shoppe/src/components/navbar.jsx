@@ -6,7 +6,7 @@ import "../styles/navbar.css"
 
 function Navbar() {
     return (
-        <nav className="navbar navbar-expand-lg mx-0 px-4 py-2 bg-light">
+        <nav className="navbar navbar-expand-sm mx-0 px-4 py-2 bg-light">
             <a href="." className="navbar-brand">
                 <img 
                     src="https://cdn-icons-png.flaticon.com/512/2838/2838838.png" 
