@@ -17,6 +17,9 @@
   transform: scale(103%);
   transition: 0.5s transform;
 }
+.productDisplay__items > *:hover > .item__purchase {
+  display: block;
+}
 
 .item__name,
 .item__price {
@@ -24,9 +27,21 @@
   font-size: 1.15rem;
 }
 
+.item__purchase,
 .item__price {
   position: absolute;
   bottom: 10px;
+}
+
+.item__purchase {
+  display: none;
+  left: 10px;
+  padding: 2px 5px;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+.item__price {
   right: 10px;
   text-align: right;
 }
