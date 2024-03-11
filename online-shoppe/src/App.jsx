@@ -8,7 +8,7 @@ import Navbar from './components/navbar';
 
 function App() {
   const [cart, setCart] = useState([]);
-
+  const clearCart = function() { setCart([]) }
   const addToCart = function(newItem) {
     setCart([ ...cart, newItem ])
   }
@@ -25,7 +25,7 @@ function App() {
       children: [
         { path: "/", element: <p>Home!</p>},
         { path: "shop", element: <ProductDisplay onItemSelect={addToCart}/>},
-        { path: "mycart", element: <MyCart cart={cart} />},
+        { path: "mycart", element: <MyCart cart={cart} onPurchase={clearCart}/>},
       ]
     },
   ])
