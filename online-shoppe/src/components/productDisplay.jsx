@@ -28,7 +28,10 @@ function ProductDisplay({onItemSelect}) {
             (text.length > maxLength? "...": "")
     }
 
-    return items.length == 0? (<p className="px-4 mx-0 mb-2">Fetching data...</p>):(
+    return items.length == 0? (
+        err === null? (<p className="px-4 mx-0 mb-2">Fetching data...</p>):
+                    (<p className="px-4 mx-0 mb-2">Something went wrong</p>)
+        ) :(
         <section className="productDisplay px-4 mx-0 mb-2 grid">
             <h1 className="my-3">Today's Offer</h1>
             <div className="productDisplay__items">
