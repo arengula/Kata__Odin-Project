@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import ProductDisplay from './components/productDisplay.jsx';
 import MyCart from './components/myCart.jsx';
 import Navbar from './components/navbar';
+import Home from './components/home.jsx';
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -23,7 +24,7 @@ function App() {
         </>
       ),
       children: [
-        { path: "/", element: <p>Home!</p>},
+        { path: "/", element: <Home />},
         { path: "shop", element: <ProductDisplay onItemSelect={addToCart}/>},
         { path: "mycart", element: <MyCart cart={cart} onPurchase={clearCart}/>},
       ]

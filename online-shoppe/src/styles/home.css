@@ -1,0 +1,39 @@
+.home__section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+@media (max-width: 1000px) {
+  .home__section {
+    flex-wrap: wrap;
+  }
+}
+
+.home__sectionImage {
+  flex: 1;
+  min-width: 500px;
+  max-width: 600px;
+}
+@media (max-width: 700px) {
+  .home__sectionImage {
+    min-width: 100%;
+    max-width: 100%;
+  }
+}
+.home__sectionImage > img {
+  margin: auto;
+  transform: translateX(-40px);
+  width: 100%;
+}
+@media (max-width: 700px) {
+  .home__sectionImage > img {
+    transform: translateX(0px);
+  }
+}
+
+.home__sectionContent {
+  flex: 1;
+  min-width: 400px;
+}
+
+/*# sourceMappingURL=home.css.map */

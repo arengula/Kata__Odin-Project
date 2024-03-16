@@ -1,0 +1,35 @@
+.home__section {
+    display: flex;
+    align-items: center;
+    @media (max-width: 1000px) {
+        flex-wrap: wrap;
+    }
+
+    gap: 10px;
+}
+
+
+.home__sectionImage {
+    flex: 1;
+    min-width: 500px;
+    max-width: 600px;
+    @media (max-width: 700px) {
+        min-width: 100%;
+        max-width: 100%;
+    }
+
+    > img {
+        margin: auto;
+        @media (max-width: 700px) {
+            transform: translateX(0px);
+        }
+
+        transform: translateX(-40px);
+        width: 100%;
+    }
+}
+
+.home__sectionContent {
+    flex: 1;
+    min-width: 400px;
+}
