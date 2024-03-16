@@ -10,6 +10,7 @@
   width: 40px;
   aspect-ratio: 1;
 }
+
 .navbar-brand > p {
   vertical-align: bottom;
   font-size: 1.75rem;
@@ -17,5 +18,7 @@
   display: inline;
   padding: 0px 8px;
 }
+
+
 
 /*# sourceMappingURL=navbar.css.map */

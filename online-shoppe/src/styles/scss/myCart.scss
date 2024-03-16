@@ -1,0 +1,31 @@
+.myCart {
+    border-radius: 20px;
+}
+
+.myCart__header {
+    border-bottom: 5px solid lightgrey;
+}
+
+.myCart__main {
+    flex-wrap: wrap;
+    display: flex;
+    gap: 20px;
+    font-size: 1.25rem;
+}
+
+.myCart__left {
+    width: 100%;
+}
+
+.cart__name {
+    flex: 1;
+}
+.myCart__infoEntry,
+.cart__entry {
+    display: flex;
+    gap: 10px;
+}
+
+.myCart__purchase {
+    border-radius: 10px;
+}
